@@ -4,20 +4,34 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class NetworkManager : MonoBehaviourPunCallbacks
+public class NetworkUI : MonoBehaviourPunCallbacks
 {
     // Start is called before the first frame update
     void Start()
     {
-        ConnectToServer();
+        //ConnectToServer();
     }
 
     // Update is called once per frame
-    void ConnectToServer()
+    public void ConnectToServer()
     {
         PhotonNetwork.ConnectUsingSettings();
         Debug.Log("Try Connect To Server...");
     }
+    public void DisconnectFromServer()
+    {
+        if (PhotonNetwork.InRoom)
+        {
+            PhotonNetwork.LeaveRoom();
+            Debug.Log("Disconnected from Room!");
+            if (PhotonNetwork.IsMasterClient) { 
+                PhotonNetwork.Disconnect();
+                Debug.Log("Disconnected from Server!");
+            }
+        }
+
+    }
+
 
     public override void OnConnectedToMaster()
     {
