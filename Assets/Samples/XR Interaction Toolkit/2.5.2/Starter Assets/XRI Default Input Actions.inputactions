@@ -2648,6 +2648,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Locomotion",
+            "id": "a7711f70-f840-4169-aabf-bf921a0dae57",
+            "actions": [
+                {
+                    "name": "BodyBasedSteering",
+                    "type": "Button",
+                    "id": "b0b585e3-68f9-43ad-89d0-e65c95800291",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "dd57f03a-41cc-4367-936b-71bef648ad13",
+                    "path": "<XRController>/trackpadClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BodyBasedSteering",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
