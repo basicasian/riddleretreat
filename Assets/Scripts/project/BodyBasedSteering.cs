@@ -11,10 +11,9 @@ public class BodyBasedSteering : MonoBehaviour
     public XROrigin xrOrigin = null;
     public float speed = 0;
 
-    public GameObject helperObject;
-    public LayerMask helperObjectLayer;  // Layer mask for obstacles
     public Transform forwardDirection;
     private bool isCollidingWithObject = false;
+    public GameObject currentHelper;
 
     void Start()
     {
@@ -34,7 +33,7 @@ public class BodyBasedSteering : MonoBehaviour
     {
         Vector3 deltaSteering = (Vector3.Scale(mainCamera.transform.forward, new Vector3(1.0f, 0.0f, 1.0f)));
         xrOrigin.transform.position += deltaSteering * speed * Time.deltaTime;
-        helperObject.transform.position += deltaSteering * speed * Time.deltaTime;
+        currentHelper.transform.position += deltaSteering * speed * Time.deltaTime;
     }
 
 
@@ -53,6 +52,7 @@ public class BodyBasedSteering : MonoBehaviour
                 //Debug.Log(col);
                 if (col.CompareTag("HelperObject"))
                 {
+                    currentHelper = col.gameObject;
                     return true;
                 }
             }
