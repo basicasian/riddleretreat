@@ -9,6 +9,8 @@ TagManager:
   - Wall
   - Cue
   - Cue Handle
+  - Bullet
+  - HelperObject
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - BallsLayer
   - CueLayer
   - Obstacle
-  - 
+  - HelperObject
   - 
   - 
   - 

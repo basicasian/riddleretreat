@@ -10,13 +10,24 @@ public class BodyBasedSteering : MonoBehaviour
     public Camera mainCamera = null;
     public XROrigin xrOrigin = null;
 
+    private CharacterController characterController = null;
     public float speed = 0;
 
-    private bool isActive = true;
+    public GameObject helperObject;
+    public LayerMask helperObjectLayer;  // Layer mask for obstacles
+    public Transform forwardDirection;
+    private bool isCollidingWithObject = false;
+
+    void Start()
+    {
+        characterController = xrOrigin.GetComponent<CharacterController>();
+    }
 
     void Update()
     {
-        if (steeringReference.action.IsPressed() &&  isActive)
+        isCollidingWithObject = checkCollider();
+
+        if (steeringReference.action.IsPressed() && isCollidingWithObject)
         {      
             Steering();
         }
@@ -26,15 +37,36 @@ public class BodyBasedSteering : MonoBehaviour
     {
         Vector3 deltaSteering = (Vector3.Scale(mainCamera.transform.forward, new Vector3(1.0f, 0.0f, 1.0f)));
         xrOrigin.transform.position += deltaSteering * speed * Time.deltaTime;
+        helperObject.transform.position += deltaSteering * speed * Time.deltaTime;
     }
 
-    public void SetActive(bool value)
+
+    public bool checkCollider()
     {
-        isActive = value;
+        var offset = new Vector3(0, 2, 0);
+        var localPoint0 = mainCamera.transform.position - offset;
+        var localPoint1 = mainCamera.transform.position + offset;
+
+        var colliders = Physics.OverlapCapsule(localPoint0, localPoint1, 0.2f);
+
+        if (colliders.Length > 0)
+        {
+            foreach (Collider col in colliders)
+            {
+
+                //Debug.Log(col);
+                if (col.CompareTag("HelperObject"))
+                {
+                    return true;
+                }
+            }
+        }
+         return false;
     }
 
-    public bool getActive()
+    public bool getSetIsCollidingWithObject()
     {
-        return isActive;
+        return isCollidingWithObject;
     }
+
 }
