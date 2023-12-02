@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.XR.CoreUtils;
+using System;
+
 
 public class BodyBasedSteering : MonoBehaviour
 {
@@ -11,9 +13,13 @@ public class BodyBasedSteering : MonoBehaviour
     public XROrigin xrOrigin = null;
     public float speed = 0;
 
-    public Transform forwardDirection;
-    private bool isCollidingWithObject = false;
+    public Vector3 forwardDirection;
+    private bool isStandingOnHelper = false;
     public GameObject currentHelper;
+
+    private bool isCollidingObstacle = false;
+    private Collider collidingObstacle;
+    private bool isLookingAtObstacle = true;
 
     void Start()
     {
@@ -21,9 +27,9 @@ public class BodyBasedSteering : MonoBehaviour
 
     void Update()
     {
-        isCollidingWithObject = checkCollider();
+        isStandingOnHelper = checkCollider("HelperObject");
 
-        if (steeringReference.action.IsPressed() && isCollidingWithObject)
+        if (steeringReference.action.IsPressed() && isStandingOnHelper)
         {      
             Steering();
         }
@@ -31,26 +37,53 @@ public class BodyBasedSteering : MonoBehaviour
 
     public void Steering()
     {
-        Vector3 deltaSteering = (Vector3.Scale(mainCamera.transform.forward, new Vector3(1.0f, 0.0f, 1.0f)));
+
+        // if is not colliding against anything,  move in x and z direction
+        Vector3 movementRestriction = new Vector3(1.0f, 0.0f, 1.0f); 
+
+        // only restrict movements if colliding against obstacle 
+        // TODO: currently stick to the obstacle ´- can be used as a feature
+        if (isCollidingObstacle)
+        {
+            // if is colliding against obstacle, do not move in direction of obstacle
+            Vector3 closestPoint = collidingObstacle.ClosestPointOnBounds(currentHelper.transform.position);
+
+            // if closestPoint is closer to x direction 
+            // do not move in x direction
+            if (Math.Abs(closestPoint.x - currentHelper.transform.position.x) <= 0.2)
+            {
+                movementRestriction = new Vector3(1.0f, 0.0f, 0.0f);
+            }
+
+            // if closestPoint is closer to z direction 
+            // do not move in z direction
+            else if (Math.Abs(closestPoint.z - currentHelper.transform.position.z) <= 0.2)
+            {
+                movementRestriction = new Vector3(0.0f, 0.0f, 1.0f);
+            }
+        } 
+
+        Vector3 deltaSteering = (Vector3.Scale(mainCamera.transform.forward, movementRestriction));
         xrOrigin.transform.position += deltaSteering * speed * Time.deltaTime;
         currentHelper.transform.position += deltaSteering * speed * Time.deltaTime;
     }
 
 
-    public bool checkCollider()
+
+    public bool checkCollider(string tag)
     {
         var offset = new Vector3(0, 2, 0);
         var localPoint0 = mainCamera.transform.position - offset;
         var localPoint1 = mainCamera.transform.position + offset;
 
-        var colliders = Physics.OverlapCapsule(localPoint0, localPoint1, 0.2f);
+        var colliders = Physics.OverlapCapsule(localPoint0, localPoint1, 0.1f);
 
         if (colliders.Length > 0)
         {
             foreach (Collider col in colliders)
             {
                 //Debug.Log(col);
-                if (col.CompareTag("HelperObject"))
+                if (col.CompareTag(tag))
                 {
                     currentHelper = col.gameObject;
                     return true;
@@ -60,9 +93,21 @@ public class BodyBasedSteering : MonoBehaviour
          return false;
     }
 
-    public bool getSetIsCollidingWithObject()
+    public void setIsCollidingObstacle(bool value)
     {
-        return isCollidingWithObject;
+        isCollidingObstacle = value;
+
     }
 
+    public void setCollidingObstacle(Collider collider)
+    {
+        collidingObstacle = collider;
+    }
+
+    public void setIsLookingAtObstacle(Collider collider)
+    {
+        Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
+        isLookingAtObstacle = collider.bounds.IntersectRay(ray);
+
+    }
 }
