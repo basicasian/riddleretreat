@@ -56,8 +56,8 @@ public class CreatedObjectController : MonoBehaviour
 
         foreach (var interactable in grabInteractables)
         {
-            interactable.transform.gameObject.transform.localScale *= scaleFactor;
-            interactable.transform.gameObject.GetComponent<Rigidbody>().mass *= scaleFactor;
+            interactable.transform.gameObject.transform.localScale *= (1 + scaleFactor);
+            interactable.transform.gameObject.GetComponent<Rigidbody>().mass *= (1 + scaleFactor);
         }
     }
 
@@ -68,8 +68,8 @@ public class CreatedObjectController : MonoBehaviour
 
         foreach (var interactable in grabInteractables)
         {
-            interactable.transform.gameObject.transform.localScale *= -scaleFactor;
-            interactable.transform.gameObject.GetComponent<Rigidbody>().mass *= -scaleFactor;
+            interactable.transform.gameObject.transform.localScale *= (1 - scaleFactor);
+            interactable.transform.gameObject.GetComponent<Rigidbody>().mass *= (1 - scaleFactor);
         }
     }
 

@@ -11,6 +11,7 @@ TagManager:
   - Cue Handle
   - Bullet
   - HelperObject
+  - CreatedObject
   layers:
   - Default
   - TransparentFX
