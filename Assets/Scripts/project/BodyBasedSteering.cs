@@ -13,22 +13,19 @@ public class BodyBasedSteering : MonoBehaviour
     public XROrigin xrOrigin = null;
     public float speed = 0;
 
-    public Vector3 forwardDirection;
-    private bool isStandingOnHelper = false;
     public GameObject currentHelper;
+    private bool isStandingOnHelper;
+    Vector3 movementRestriction = new Vector3(1.0f, 0.0f, 1.0f);
 
     private bool isCollidingObstacle = false;
     private Collider collidingObstacle;
     private bool isLookingAtObstacle = true;
-    Vector3 movementRestriction = new Vector3(1.0f, 0.0f, 1.0f);
 
-    void Start()
-    {
-    }
 
     void Update()
     {
-        if (steeringReference.action.IsPressed() && checkCollider("HelperObject"))
+        isStandingOnHelper = checkCollider("HelperObject");
+        if (steeringReference.action.IsPressed() && isStandingOnHelper)
         {      
             Steering();
         }
@@ -36,19 +33,18 @@ public class BodyBasedSteering : MonoBehaviour
 
     public void Steering()
     {
-
         // if is not colliding against anything,  move in x and z direction
+        // if collided, restrction during setCollidingObstacle()
         if (!isCollidingObstacle)
         {
             movementRestriction = new Vector3(1.0f, 0.0f, 1.0f);
         } 
 
         Vector3 deltaSteering = (Vector3.Scale(mainCamera.transform.forward, movementRestriction));
-        xrOrigin.transform.position += deltaSteering * speed * Time.deltaTime;
+
         currentHelper.transform.position += deltaSteering * speed * Time.deltaTime;
+        xrOrigin.transform.position += deltaSteering * speed * Time.deltaTime;
     }
-
-
 
     public bool checkCollider(string tag)
     {
@@ -62,27 +58,36 @@ public class BodyBasedSteering : MonoBehaviour
         {
             foreach (Collider col in colliders)
             {
-                //Debug.Log(col);
                 if (col.CompareTag(tag))
                 {
                     currentHelper = col.gameObject;
+
+                    // set color 
+                    Color customColor = new Color(0.6f, 1, 0.6f, 0.7f);
+                    col.gameObject.GetComponent<Renderer>().material.SetColor("_Color", customColor);
+
                     return true;
+                } else
+                {
+
+                    // reset color 
+                    GameObject[] helpers = GameObject.FindGameObjectsWithTag(tag);
+                    if (helpers.Length != 0)
+                    {
+                        foreach (GameObject helper in helpers)
+                        {
+                            Color customColor = new Color(0.6f, 0.9f, 1, 0.7f);
+                            helper.GetComponent<Renderer>().material.SetColor("_Color", customColor);
+                        }
+                    }
                 }
             }
         }
          return false;
     }
 
-    public void setIsCollidingObstacle(bool value)
+    private void checkClosestPoint()
     {
-        isCollidingObstacle = value;
-    }
-
-    public void setCollidingObstacle(Collider collider)
-    {
-        collidingObstacle = collider;
-
-   
         // if is colliding against obstacle, do not move in direction of obstacle; set once during collision start
         // TODO: currently stick to the obstacle - can be used as a feature
         Vector3 closestPoint = collidingObstacle.ClosestPointOnBounds(currentHelper.transform.position);
@@ -100,7 +105,17 @@ public class BodyBasedSteering : MonoBehaviour
         {
             movementRestriction = new Vector3(0.0f, 0.0f, 1.0f);
         }
+    }
 
+    public void setIsCollidingObstacle(bool value)
+    {
+        isCollidingObstacle = value;
+    }
+
+    public void setCollidingObstacle(Collider collider)
+    {
+        collidingObstacle = collider;
+        checkClosestPoint();
     }
 
     // not used yet
@@ -109,4 +124,6 @@ public class BodyBasedSteering : MonoBehaviour
         Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
         isLookingAtObstacle = collider.bounds.IntersectRay(ray);
     }
+
+
 }
