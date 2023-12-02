@@ -9,8 +9,6 @@ public class BodyBasedSteering : MonoBehaviour
     public InputActionReference steeringReference = null;
     public Camera mainCamera = null;
     public XROrigin xrOrigin = null;
-
-    private CharacterController characterController = null;
     public float speed = 0;
 
     public GameObject helperObject;
@@ -20,7 +18,6 @@ public class BodyBasedSteering : MonoBehaviour
 
     void Start()
     {
-        characterController = xrOrigin.GetComponent<CharacterController>();
     }
 
     void Update()
@@ -53,7 +50,6 @@ public class BodyBasedSteering : MonoBehaviour
         {
             foreach (Collider col in colliders)
             {
-
                 //Debug.Log(col);
                 if (col.CompareTag("HelperObject"))
                 {
