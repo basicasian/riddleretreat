@@ -24,11 +24,6 @@ public class CreatedObjectController : MonoBehaviour
         rightInteractor = rightController.GetComponent<XRDirectInteractor>();       
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void createObject(string objectType)
     {
         GameObject createdObject = cubePrefab;
@@ -56,8 +51,8 @@ public class CreatedObjectController : MonoBehaviour
 
         foreach (var interactable in grabInteractables)
         {
-            interactable.transform.gameObject.transform.localScale *= (1 + scaleFactor);
-            interactable.transform.gameObject.GetComponent<Rigidbody>().mass *= (1 + scaleFactor);
+            interactable.transform.gameObject.transform.localScale *= (1.1f);
+            interactable.transform.gameObject.GetComponent<Rigidbody>().mass *= (1.1f);
         }
     }
 
@@ -70,6 +65,31 @@ public class CreatedObjectController : MonoBehaviour
         {
             interactable.transform.gameObject.transform.localScale *= (1 - scaleFactor);
             interactable.transform.gameObject.GetComponent<Rigidbody>().mass *= (1 - scaleFactor);
+        }
+    }
+
+    public void colorObject(string color)
+    {
+        leftInteractor.GetValidTargets(grabInteractables);
+        rightInteractor.GetValidTargets(grabInteractables);
+
+        foreach (var interactable in grabInteractables)
+        {
+            switch (color)
+            {
+                case "red":
+                    interactable.transform.gameObject.GetComponent<Renderer>().material.SetColor("_Color", new Color(1.0f, 0.35f, 0.35f, 1.0f));
+                    break;
+                case "yellow":
+                    interactable.transform.gameObject.GetComponent<Renderer>().material.SetColor("_Color", new Color(1.0f, 0.75f, 0.35f, 1.0f));
+                    break;
+                case "green":
+                    interactable.transform.gameObject.GetComponent<Renderer>().material.SetColor("_Color", new Color(0.5f, 1.0f, 0.5f, 1.0f));
+                    break;
+                case "blue":
+                    interactable.transform.gameObject.GetComponent<Renderer>().material.SetColor("_Color", new Color(0.35f, 0.75f, 1.0f, 1.0f));
+                    break;
+            }
         }
     }
 
