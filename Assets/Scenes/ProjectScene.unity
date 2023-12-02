@@ -939,6 +939,7 @@ GameObject:
   - component: {fileID: 265516657}
   - component: {fileID: 265516659}
   - component: {fileID: 265516660}
+  - component: {fileID: 265516661}
   m_Layer: 0
   m_Name: Right Controller
   m_TagString: Untagged
@@ -1255,7 +1256,19 @@ MonoBehaviour:
   m_StartingTargetFilter: {fileID: 0}
   m_HoverEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 265516661}
+        m_TargetAssemblyTypeName: HapticFeedbackOnHover, Assembly-CSharp
+        m_MethodName: StartHapticPulse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_HoverExited:
     m_PersistentCalls:
       m_Calls: []
@@ -1353,6 +1366,20 @@ MonoBehaviour:
   pulseDuration: 0.05
   pulseInterval: 0.1
   HitsGameObject: {fileID: 0}
+--- !u!114 &265516661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265516653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a594294df8e8081479c86fe1ff5785d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensity: 0.5
+  pulseDuration: 0.1
 --- !u!1 &301899707
 GameObject:
   m_ObjectHideFlags: 0
@@ -3156,6 +3183,7 @@ GameObject:
   - component: {fileID: 648693332}
   - component: {fileID: 648693331}
   - component: {fileID: 648693334}
+  - component: {fileID: 648693337}
   - component: {fileID: 648693333}
   - component: {fileID: 648693335}
   - component: {fileID: 648693336}
@@ -3449,7 +3477,7 @@ SphereCollider:
   m_GameObject: {fileID: 648693329}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.15
   m_Center: {x: 0, y: 0, z: 0}
@@ -3478,7 +3506,19 @@ MonoBehaviour:
   m_StartingTargetFilter: {fileID: 0}
   m_HoverEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 648693337}
+        m_TargetAssemblyTypeName: HapticFeedbackOnHover, Assembly-CSharp
+        m_MethodName: StartHapticPulse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_HoverExited:
     m_PersistentCalls:
       m_Calls: []
@@ -3576,6 +3616,20 @@ MonoBehaviour:
   pulseDuration: 0.05
   pulseInterval: 0.1
   HitsGameObject: {fileID: 0}
+--- !u!114 &648693337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648693329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a594294df8e8081479c86fe1ff5785d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensity: 0.5
+  pulseDuration: 0.1
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
