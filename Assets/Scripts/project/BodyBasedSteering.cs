@@ -96,7 +96,6 @@ public class BodyBasedSteering : MonoBehaviour
     public void setIsCollidingObstacle(bool value)
     {
         isCollidingObstacle = value;
-
     }
 
     public void setCollidingObstacle(Collider collider)
