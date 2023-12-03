@@ -23,7 +23,7 @@ TagManager:
   - BallsLayer
   - CueLayer
   - Obstacle
-  - HelperObject
+  - Border
   - 
   - 
   - 

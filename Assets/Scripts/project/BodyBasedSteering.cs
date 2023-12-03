@@ -29,7 +29,10 @@ public class BodyBasedSteering : MonoBehaviour
         isStandingOnHelper = checkCollider("HelperObject");
         if (isStandingOnHelper)
         {
-            isOnPoison = checkIsOnPoison();
+            if (!isOnPoison)
+            {
+                BounceBack();
+            }
             if (steeringReference.action.IsPressed() && isOnPoison)
             {
                 Steering();
@@ -139,11 +142,9 @@ public class BodyBasedSteering : MonoBehaviour
         checkClosestPoint();
     }
 
-    // not used yet
-    public void setIsLookingAtObstacle(Collider collider)
+    public void setIsOnPoison(bool val)
     {
-        Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
-        isLookingAtObstacle = collider.bounds.IntersectRay(ray);
+        isOnPoison = val;
     }
 
     private void BounceBack()
@@ -157,3 +158,11 @@ public class BodyBasedSteering : MonoBehaviour
 
 
 }
+
+/*    // not used yet
+    public void setIsLookingAtObstacle(Collider collider)
+    {
+        Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
+        isLookingAtObstacle = collider.bounds.IntersectRay(ray);
+    }
+*/

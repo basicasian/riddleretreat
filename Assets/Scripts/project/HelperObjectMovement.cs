@@ -31,6 +31,11 @@ public class HelperObjectMovement : MonoBehaviour
             bodyBasedSteeringScript.setCollidingObstacle(other);
         }
 
+        if (other.gameObject.layer == LayerMask.NameToLayer("Border"))
+        {
+            bodyBasedSteeringScript.setIsOnPoison(false);
+        }
+
 
     }
 
@@ -41,7 +46,16 @@ public class HelperObjectMovement : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        bodyBasedSteeringScript.setIsCollidingObstacle(false);
+        if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        {
+            bodyBasedSteeringScript.setIsCollidingObstacle(false);
+        }
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("Border"))
+        {
+            bodyBasedSteeringScript.setIsOnPoison(true);
+        }
+
     }
 
 }
