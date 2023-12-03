@@ -10,7 +10,8 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
 
     public GameObject xrOrigin;
     private GameLogic gameLogic;
-    public Vector3 startPosition = new Vector3(3, 0, -5);
+    public Vector3 playerPosition = new Vector3(3, 0, -5);
+    public Vector3 helperPosition = new Vector3(3, 0, -2);
 
 
     public void Start()
@@ -20,20 +21,21 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
     {
         base.OnJoinedRoom();
 
-        // track
-        //Vector3 distance = new Vector3((PhotonNetwork.PlayerList.Length -1) * 10, 0, 0);
-
         // player position
-        if (PhotonNetwork.PlayerList.Length % 2 == 0) {
-            startPosition = new Vector3(3, 0, -5);
-        } 
+        // depends on sign assigned left or right
+        Vector3 sign = new Vector3(1, 1, 1);
+        if (PhotonNetwork.PlayerList.Length % 2 != 0) {
+            sign = new Vector3(-1, 1, 1);
+        }
 
-        xrOrigin.transform.position = startPosition;
+        xrOrigin.transform.position = Vector3.Scale(playerPosition, sign);
         // player
-        spawnedPlayerPrefab = PhotonNetwork.Instantiate("Prefabs/Network Player", startPosition, Quaternion.identity);
+        playerPosition = Vector3.Scale(playerPosition, sign);
+        spawnedPlayerPrefab = PhotonNetwork.Instantiate("Prefabs/Network Player", playerPosition, Quaternion.identity);
 
         // helperObject
-        spawnedHelperPrefab = PhotonNetwork.Instantiate("Prefabs/Project/HelperObject", (startPosition + new Vector3(0, 0.075f, 3)), Quaternion.identity);
+        helperPosition = Vector3.Scale(helperPosition, sign);
+        spawnedHelperPrefab = PhotonNetwork.Instantiate("Prefabs/Project/HelperObject", helperPosition, Quaternion.identity);
 
     }
 

@@ -10,8 +10,6 @@ public class PlayerPoisonRestriction : MonoBehaviour
     public Camera mainCamera = null;
     public XROrigin xrOrigin = null;
 
-    public bool isStandingOnPoison = false;
-    private Vector3 startPosition;
 
     public GameObject networkManager;
     private NetworkPlayerSpawner networkPlayerSpawnerScript;
@@ -25,7 +23,7 @@ public class PlayerPoisonRestriction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isStandingOnPoison = checkCollider("Poison", "HelperObject");
+        checkCollider("Poison", "HelperObject");
     }
 
     public bool checkCollider(string tag1, string tag2)
@@ -51,10 +49,8 @@ public class PlayerPoisonRestriction : MonoBehaviour
             {
                 if (col.CompareTag(tag1))
                 {
-                    startPosition = networkPlayerSpawnerScript.startPosition;
-                    xrOrigin.transform.position = startPosition;
-                    networkPlayerSpawnerScript.spawnedHelperPrefab.transform.position = startPosition + new Vector3(0, 0.075f, 3);
-                    isStandingOnPoison = true;
+                    xrOrigin.transform.position = networkPlayerSpawnerScript.playerPosition;
+                    networkPlayerSpawnerScript.spawnedHelperPrefab.transform.position = networkPlayerSpawnerScript.helperPosition;
                 }
             }
 

@@ -12,17 +12,17 @@ public class BodyBasedSteering : MonoBehaviour
     public Camera mainCamera = null;
     public XROrigin xrOrigin = null;
     public float speed = 0;
+    public float bounceForce = 1f;
+
 
     public GameObject currentHelper;
     private bool isStandingOnHelper;
     Vector3 movementRestriction = new Vector3(1.0f, 0.0f, 1.0f);
 
     private bool isCollidingObstacle = false;
-    private Collider collidingObstacle;
-    private bool isLookingAtObstacle = true;
+    private Collider collidingObject;
 
     private bool isOnPoison = true;
-    public float bounceForce = 1f;
 
     void Update()
     {
@@ -40,7 +40,7 @@ public class BodyBasedSteering : MonoBehaviour
 
     }
 
-    public void Steering()
+    private void Steering()
     {
         // if is not colliding against anything,  move in x and z direction
         // if collided, restriction during setCollidingObstacle()
@@ -55,6 +55,19 @@ public class BodyBasedSteering : MonoBehaviour
         xrOrigin.transform.position += deltaSteering * speed * Time.deltaTime;
     }
 
+    private void BounceBack()
+    {
+        Vector3 closestPoint = collidingObject.ClosestPointOnBounds(currentHelper.transform.position);
+
+        Vector3 bounceDirection = -closestPoint;  // Bounce in the opposite direction
+        Vector3 bounceForceVector = bounceDirection * bounceForce;
+
+        Vector3 deltaSteering = (Vector3.Scale(bounceForceVector, movementRestriction));
+        currentHelper.transform.Translate(deltaSteering * Time.deltaTime, Space.World);
+    }
+
+    // check if player is standing on helper objects
+    // if yes change color
     public bool checkCollider(string tag)
     {
         var offset = new Vector3(0, 2, 0);
@@ -95,50 +108,14 @@ public class BodyBasedSteering : MonoBehaviour
          return false;
     }
 
-    private void checkClosestPoint()
-    {
-        // if is colliding against obstacle, do not move in direction of obstacle; set once during collision start
-        // TODO: currently stick to the obstacle - can be used as a feature
-        Vector3 closestPoint = collidingObstacle.ClosestPointOnBounds(currentHelper.transform.position);
-
-        // if closestPoint is closer to x direction 
-        // do not move in x direction
-        if (Math.Abs(closestPoint.x - currentHelper.transform.position.x) <= 0.2)
-        {
-            movementRestriction = new Vector3(1.0f, 0.0f, 0.0f);
-        }
-
-        // if closestPoint is closer to z direction 
-        // do not move in z direction
-        else if (Math.Abs(closestPoint.z - currentHelper.transform.position.z) <= 0.2)
-        {
-            movementRestriction = new Vector3(0.0f, 0.0f, 1.0f);
-        }
-    }
-
-    public bool checkIsOnPoison()
-    {
-        if (Math.Abs(currentHelper.transform.position.z) <= 2)
-        {
-            
-            return true;
-        }
-        else
-        {
-            BounceBack();
-            return false;
-        }
-    }
-
     public void setIsCollidingObstacle(bool value)
     {
         isCollidingObstacle = value;
     }
 
-    public void setCollidingObstacle(Collider collider)
+    public void setCollidingObject(Collider collider)
     {
-        collidingObstacle = collider;
-        //checkClosestPoint();
+        collidingObject = collider;
     }
 
     public void setHelperObject(GameObject helperObjet)
@@ -146,29 +123,40 @@ public class BodyBasedSteering : MonoBehaviour
         currentHelper = helperObjet;
 
     }
-    public void setIsOnPoison(bool val)
+    public void setIsOnPoison(bool value)
     {
-        isOnPoison = val;
+        isOnPoison = value;
+        Debug.Log("Isonposion");
     }
-
-    private void BounceBack()
-    {
-        Vector3 closestPoint = collidingObstacle.ClosestPointOnBounds(currentHelper.transform.position);
-
-        Vector3 bounceDirection = -closestPoint;  // Bounce in the opposite direction
-        Vector3 bounceForceVector = bounceDirection * bounceForce;
-
-        Vector3 deltaSteering = (Vector3.Scale(bounceForceVector, movementRestriction));
-        currentHelper.transform.Translate(deltaSteering * Time.deltaTime, Space.World);
-    }
-
 
 }
 
-/*    // not used yet
+// not used yet, but maybe can be used for later
+/*    
     public void setIsLookingAtObstacle(Collider collider)
     {
         Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
         isLookingAtObstacle = collider.bounds.IntersectRay(ray);
     }
-*/
+
+
+private void checkClosestPoint()
+{
+    // if is colliding against obstacle, do not move in direction of obstacle; set once during collision start
+    // TODO: currently stick to the obstacle - can be used as a feature
+    Vector3 closestPoint = collidingObstacle.ClosestPointOnBounds(currentHelper.transform.position);
+
+    // if closestPoint is closer to x direction 
+    // do not move in x direction
+    if (Math.Abs(closestPoint.x - currentHelper.transform.position.x) <= 0.2)
+    {
+        movementRestriction = new Vector3(1.0f, 0.0f, 0.0f);
+    }
+
+    // if closestPoint is closer to z direction 
+    // do not move in z direction
+    else if (Math.Abs(closestPoint.z - currentHelper.transform.position.z) <= 0.2)
+    {
+        movementRestriction = new Vector3(0.0f, 0.0f, 1.0f);
+    }
+}*/

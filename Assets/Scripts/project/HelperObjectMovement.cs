@@ -7,15 +7,13 @@ using Unity.XR.CoreUtils;
 public class HelperObjectMovement : MonoBehaviour
 {
     public GameObject helperObject;
-    public GameObject xrOrigin = null;
-    private BodyBasedSteering bodyBasedSteeringScript;
+    public BodyBasedSteering bodyBasedSteeringScript;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        xrOrigin = GameObject.Find("XR Origin");
-        bodyBasedSteeringScript = xrOrigin.GetComponent<BodyBasedSteering>();
+        bodyBasedSteeringScript = GameObject.Find("Managers/Player Manager").GetComponent<BodyBasedSteering>();
         bodyBasedSteeringScript.setHelperObject(helperObject);
     }
 
@@ -27,24 +25,21 @@ public class HelperObjectMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        if (bodyBasedSteeringScript != null)
         {
-            bodyBasedSteeringScript.setIsCollidingObstacle(true);
-        }
+            if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+            {
+                bodyBasedSteeringScript.setIsCollidingObstacle(true);
+            }
 
-        if (other.gameObject.layer == LayerMask.NameToLayer("Border"))
-        {
-            bodyBasedSteeringScript.setIsOnPoison(false);
-            bodyBasedSteeringScript.setCollidingObstacle(other);
-            
-        }
+            if (other.gameObject.layer == LayerMask.NameToLayer("Border"))
+            {
+                bodyBasedSteeringScript.setIsOnPoison(false);
+                bodyBasedSteeringScript.setCollidingObject(other);
 
+            }
+        } 
 
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        //bodyBasedSteeringScript.setIsLookingAtObstacle(other);
     }
 
     private void OnTriggerExit(Collider other)
