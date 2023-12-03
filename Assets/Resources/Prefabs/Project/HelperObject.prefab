@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec8664254fb368c4ab216e67a9a3de34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  helperObject: {fileID: 2304995597477115704}
   xrOrigin: {fileID: 0}
 --- !u!114 &2304995597477115696
 MonoBehaviour:

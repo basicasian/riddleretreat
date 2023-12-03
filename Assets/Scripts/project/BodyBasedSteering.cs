@@ -141,6 +141,11 @@ public class BodyBasedSteering : MonoBehaviour
         //checkClosestPoint();
     }
 
+    public void setHelperObject(GameObject helperObjet)
+    {
+        currentHelper = helperObjet;
+
+    }
     public void setIsOnPoison(bool val)
     {
         isOnPoison = val;

@@ -6,15 +6,17 @@ using Unity.XR.CoreUtils;
 
 public class HelperObjectMovement : MonoBehaviour
 {
-    public XROrigin xrOrigin = null;
+    public GameObject helperObject;
+    public GameObject xrOrigin = null;
     private BodyBasedSteering bodyBasedSteeringScript;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        xrOrigin = GameObject.Find("XR Origin");
         bodyBasedSteeringScript = xrOrigin.GetComponent<BodyBasedSteering>();
-        Debug.Log("start");
+        bodyBasedSteeringScript.setHelperObject(helperObject);
     }
 
     // Update is called once per frame
@@ -34,6 +36,7 @@ public class HelperObjectMovement : MonoBehaviour
         {
             bodyBasedSteeringScript.setIsOnPoison(false);
             bodyBasedSteeringScript.setCollidingObstacle(other);
+            
         }
 
 

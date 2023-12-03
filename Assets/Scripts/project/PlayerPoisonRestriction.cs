@@ -14,7 +14,7 @@ public class PlayerPoisonRestriction : MonoBehaviour
     private Vector3 startPosition;
 
     public GameObject networkManager;
-    public NetworkPlayerSpawner networkPlayerSpawnerScript;
+    private NetworkPlayerSpawner networkPlayerSpawnerScript;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +26,6 @@ public class PlayerPoisonRestriction : MonoBehaviour
     void Update()
     {
         isStandingOnPoison = checkCollider("Poison", "HelperObject");
-        Debug.Log("isstanding on poison");
     }
 
     public bool checkCollider(string tag1, string tag2)
