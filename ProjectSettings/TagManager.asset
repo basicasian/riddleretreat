@@ -13,6 +13,7 @@ TagManager:
   - HelperObject
   - CreatedObject
   - Poison
+  - GameTable
   layers:
   - Default
   - TransparentFX

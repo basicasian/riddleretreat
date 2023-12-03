@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   helperObject: {fileID: 2304995597477115704}
+  bodyBasedSteeringScript: {fileID: 0}
 --- !u!114 &2304995597477115696
 MonoBehaviour:
   m_ObjectHideFlags: 0

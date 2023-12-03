@@ -126,7 +126,6 @@ public class BodyBasedSteering : MonoBehaviour
     public void setIsOnPoison(bool value)
     {
         isOnPoison = value;
-        Debug.Log("Isonposion");
     }
 
 }
