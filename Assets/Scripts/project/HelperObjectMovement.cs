@@ -28,12 +28,12 @@ public class HelperObjectMovement : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
             bodyBasedSteeringScript.setIsCollidingObstacle(true);
-            bodyBasedSteeringScript.setCollidingObstacle(other);
         }
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Border"))
         {
             bodyBasedSteeringScript.setIsOnPoison(false);
+            bodyBasedSteeringScript.setCollidingObstacle(other);
         }
 
 

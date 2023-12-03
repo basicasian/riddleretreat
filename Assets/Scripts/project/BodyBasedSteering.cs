@@ -27,13 +27,12 @@ public class BodyBasedSteering : MonoBehaviour
     void Update()
     {
         isStandingOnHelper = checkCollider("HelperObject");
-        if (isStandingOnHelper)
+        if (isStandingOnHelper && steeringReference.action.IsPressed())
         {
             if (!isOnPoison)
             {
                 BounceBack();
-            }
-            if (steeringReference.action.IsPressed() && isOnPoison)
+            } else
             {
                 Steering();
             }
@@ -139,7 +138,7 @@ public class BodyBasedSteering : MonoBehaviour
     public void setCollidingObstacle(Collider collider)
     {
         collidingObstacle = collider;
-        checkClosestPoint();
+        //checkClosestPoint();
     }
 
     public void setIsOnPoison(bool val)
@@ -149,7 +148,9 @@ public class BodyBasedSteering : MonoBehaviour
 
     private void BounceBack()
     {
-        Vector3 bounceDirection = -mainCamera.transform.forward;  // Bounce in the opposite direction
+        Vector3 closestPoint = collidingObstacle.ClosestPointOnBounds(currentHelper.transform.position);
+
+        Vector3 bounceDirection = -closestPoint;  // Bounce in the opposite direction
         Vector3 bounceForceVector = bounceDirection * bounceForce;
 
         Vector3 deltaSteering = (Vector3.Scale(bounceForceVector, movementRestriction));
