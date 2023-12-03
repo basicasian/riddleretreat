@@ -31,11 +31,12 @@ public class HelperObjectMovement : MonoBehaviour
             bodyBasedSteeringScript.setCollidingObstacle(other);
         }
 
+
     }
 
     private void OnTriggerStay(Collider other)
     {
-        bodyBasedSteeringScript.setIsLookingAtObstacle(other);
+        //bodyBasedSteeringScript.setIsLookingAtObstacle(other);
     }
 
     private void OnTriggerExit(Collider other)

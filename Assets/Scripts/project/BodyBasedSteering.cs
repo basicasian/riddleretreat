@@ -21,14 +21,20 @@ public class BodyBasedSteering : MonoBehaviour
     private Collider collidingObstacle;
     private bool isLookingAtObstacle = true;
 
+    private bool isOnPoison = true;
 
     void Update()
     {
         isStandingOnHelper = checkCollider("HelperObject");
-        if (steeringReference.action.IsPressed() && isStandingOnHelper)
-        {      
-            Steering();
-        }
+        if (isStandingOnHelper)
+        {
+            isOnPoison = checkIsOnPoison();
+            if (steeringReference.action.IsPressed() && isOnPoison)
+            {
+                Steering();
+            }
+        }      
+
     }
 
     public void Steering()
@@ -104,6 +110,18 @@ public class BodyBasedSteering : MonoBehaviour
         else if (Math.Abs(closestPoint.z - currentHelper.transform.position.z) <= 0.2)
         {
             movementRestriction = new Vector3(0.0f, 0.0f, 1.0f);
+        }
+    }
+
+    public bool checkIsOnPoison()
+    {
+        if (Math.Abs(currentHelper.transform.position.z) <= 2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 

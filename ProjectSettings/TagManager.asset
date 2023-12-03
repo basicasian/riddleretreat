@@ -12,6 +12,7 @@ TagManager:
   - Bullet
   - HelperObject
   - CreatedObject
+  - Poison
   layers:
   - Default
   - TransparentFX
