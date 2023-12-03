@@ -22,6 +22,7 @@ public class BodyBasedSteering : MonoBehaviour
     private bool isLookingAtObstacle = true;
 
     private bool isOnPoison = true;
+    public float bounceForce = 1f;
 
     void Update()
     {
@@ -40,7 +41,7 @@ public class BodyBasedSteering : MonoBehaviour
     public void Steering()
     {
         // if is not colliding against anything,  move in x and z direction
-        // if collided, restrction during setCollidingObstacle()
+        // if collided, restriction during setCollidingObstacle()
         if (!isCollidingObstacle)
         {
             movementRestriction = new Vector3(1.0f, 0.0f, 1.0f);
@@ -117,10 +118,12 @@ public class BodyBasedSteering : MonoBehaviour
     {
         if (Math.Abs(currentHelper.transform.position.z) <= 2)
         {
+            
             return true;
         }
         else
         {
+            BounceBack();
             return false;
         }
     }
@@ -141,6 +144,15 @@ public class BodyBasedSteering : MonoBehaviour
     {
         Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
         isLookingAtObstacle = collider.bounds.IntersectRay(ray);
+    }
+
+    private void BounceBack()
+    {
+        Vector3 bounceDirection = -mainCamera.transform.forward;  // Bounce in the opposite direction
+        Vector3 bounceForceVector = bounceDirection * bounceForce;
+
+        Vector3 deltaSteering = (Vector3.Scale(bounceForceVector, movementRestriction));
+        currentHelper.transform.Translate(deltaSteering * Time.deltaTime, Space.World);
     }
 
 
