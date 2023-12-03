@@ -16,6 +16,7 @@ public class CreatedObjectController : MonoBehaviour
     public GameObject cylinderPrefab;
 
     public float scaleFactor;
+    public Vector3 startPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +41,7 @@ public class CreatedObjectController : MonoBehaviour
                 break;
         }
 
-        Instantiate(createdObject, new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(createdObject, startPosition, Quaternion.identity);
     }
 
 
