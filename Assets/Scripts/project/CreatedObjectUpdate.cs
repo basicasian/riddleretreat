@@ -60,8 +60,11 @@ public class CreatedObjectUpdate : MonoBehaviour, IPunObservable
     public void setColour(Colour newColour)
     {
         colour = newColour;
+    }
 
-
+    public Colour GetColour()
+    {
+        return colour;
     }
 }
 
