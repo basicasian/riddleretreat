@@ -15,8 +15,6 @@ public class PlayerUIVisibility : MonoBehaviour
     {
         eulerForward = canvas.transform.rotation.eulerAngles[1];
         forwardDirectionCanvas = canvas.transform.rotation.y;
-        Debug.Log(eulerForward);
-        Debug.Log(forwardDirectionCanvas);
     }
 
 
@@ -28,7 +26,6 @@ public class PlayerUIVisibility : MonoBehaviour
 
             // Normalize angles to be in the range [0, 360)
             angleToPlayer = (angleToPlayer % 360 + 360) % 360;
-            Debug.Log(angleToPlayer);
 
             if ((angleToPlayer <= ((270 + eulerForward) % 361) && (angleToPlayer >= ((90 + eulerForward) % 361))))
             {

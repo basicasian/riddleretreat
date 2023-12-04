@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class StartGameLogic : MonoBehaviour
+
+public class StartGameLogic : MonoBehaviour, IPunObservable
 {
     public GameObject gameTable;
     public GameObject description;
@@ -89,6 +91,19 @@ public class StartGameLogic : MonoBehaviour
         leftStartReady = false;
         rightStartReady = false;
     }
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsReading)
+        {
+            leftStartReady = (bool)stream.ReceiveNext();
+            rightStartReady = (bool)stream.ReceiveNext();
 
+        }
+        else if (stream.IsWriting)
+        {
+            stream.SendNext(leftStartReady);
+            stream.SendNext(rightStartReady);
+        }
+    }
 
 }
