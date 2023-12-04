@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6803009652104814152}
   - component: {fileID: -5086821221490183351}
   - component: {fileID: 1221989645363597427}
+  - component: {fileID: -7755533837476390949}
   m_Layer: 0
   m_Name: CreatedSphere
   m_TagString: CreatedObject
@@ -308,3 +309,16 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 1
   m_UseLocal: 1
+--- !u!114 &-7755533837476390949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5250062756089174383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8bc479a4d4273245bc2bd8134b1f06a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colour: 0

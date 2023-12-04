@@ -17,17 +17,32 @@ public class CreatedObjectUpdate : MonoBehaviour, IPunObservable
     public Colour colour;
     // public Vector3 localScale;
 
+    private PhotonView photonView;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        photonView = GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        switch (colour)
+        {
+            case Colour.red:
+                GetComponent<Renderer>().material.SetColor("_Color", new Color(1.0f, 0.35f, 0.35f, 1.0f));
+                break;
+            case Colour.yellow:
+                GetComponent<Renderer>().material.SetColor("_Color", new Color(1.0f, 0.75f, 0.35f, 1.0f));
+                break;
+            case Colour.green:
+                GetComponent<Renderer>().material.SetColor("_Color", new Color(0.5f, 1.0f, 0.5f, 1.0f));
+                break;
+            case Colour.blue:
+                GetComponent<Renderer>().material.SetColor("_Color", new Color(0.35f, 0.75f, 1.0f, 1.0f));
+                break;
+        }
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -45,21 +60,7 @@ public class CreatedObjectUpdate : MonoBehaviour, IPunObservable
     public void setColour(Colour newColour)
     {
         colour = newColour;
-        switch (colour)
-        {
-            case Colour.red:
-                GetComponent<Renderer>().material.SetColor("_Color", new Color(1.0f, 0.35f, 0.35f, 1.0f));
-                break;
-            case Colour.yellow:
-                GetComponent<Renderer>().material.SetColor("_Color", new Color(1.0f, 0.75f, 0.35f, 1.0f));
-                break;
-            case Colour.green:
-                GetComponent<Renderer>().material.SetColor("_Color", new Color(0.5f, 1.0f, 0.5f, 1.0f));
-                break;
-            case Colour.blue:
-                GetComponent<Renderer>().material.SetColor("_Color", new Color(0.35f, 0.75f, 1.0f, 1.0f));
-                break;
-        }
+
 
     }
 }

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8963008263556525717}
   - component: {fileID: -1811980827799368191}
   - component: {fileID: -3255408523806332547}
+  - component: {fileID: 6106317661642181240}
   m_Layer: 0
   m_Name: CreatedCylinder
   m_TagString: CreatedObject
@@ -309,3 +310,16 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 1
   m_UseLocal: 1
+--- !u!114 &6106317661642181240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4370462790684643381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8bc479a4d4273245bc2bd8134b1f06a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colour: 0
