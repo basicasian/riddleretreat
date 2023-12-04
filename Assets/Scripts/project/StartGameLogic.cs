@@ -70,6 +70,7 @@ public class StartGameLogic : MonoBehaviour
     {
         gameTable.SetActive(true);
         description.SetActive(true);
+        player2Uis.SetActive(true);
     }
 
 
