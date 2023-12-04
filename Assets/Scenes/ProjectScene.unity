@@ -1788,7 +1788,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &339484950
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5742,7 +5742,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: sphere
+          m_StringArgument: CreatedSphere
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1000078677
@@ -5910,7 +5910,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: cylinder
+          m_StringArgument: CreatedCylinder
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1031833585
@@ -11035,7 +11035,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: cube
+          m_StringArgument: CreatedCube
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1926178473

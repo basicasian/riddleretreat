@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using Photon.Pun;
 
-public class CreatedObjectController : MonoBehaviour
+public class CreatedObjectController : MonoBehaviourPunCallbacks
 {
     public GameObject leftController;
     public GameObject rightController;
@@ -27,11 +28,12 @@ public class CreatedObjectController : MonoBehaviour
 
     public void createObject(string objectType)
     {
-        GameObject createdObject = cubePrefab;
+        string createdObject = "Prefabs/Project/" + objectType;
+        /*
         switch (objectType)
         {
             case "cube":
-                createdObject = cubePrefab;
+                createdObject = "CreatedCube";
                 break;
             case "sphere":
                 createdObject = spherePrefab;
@@ -39,9 +41,11 @@ public class CreatedObjectController : MonoBehaviour
             case "cylinder":
                 createdObject = cylinderPrefab;
                 break;
-        }
+        }*/
 
-        Instantiate(createdObject, startPosition, Quaternion.identity);
+        PhotonNetwork.Instantiate(createdObject, startPosition, Quaternion.identity);
+
+        //Instantiate(createdObject, startPosition, Quaternion.identity);
     }
 
 
