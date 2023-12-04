@@ -1,0 +1,67 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Photon.Pun;
+
+public enum Colour
+{
+    white,
+    red,
+    yellow,
+    green,
+    blue
+}
+
+public class CreatedObjectUpdate : MonoBehaviour, IPunObservable
+{
+    public Colour colour;
+    // public Vector3 localScale;
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsReading)
+        {
+            colour = (Colour)stream.ReceiveNext();
+        }
+        else if (stream.IsWriting)
+        {
+            stream.SendNext(colour);
+        }
+    }
+
+    public void setColour(Colour newColour)
+    {
+        colour = newColour;
+        switch (colour)
+        {
+            case Colour.red:
+                GetComponent<Renderer>().material.SetColor("_Color", new Color(1.0f, 0.35f, 0.35f, 1.0f));
+                break;
+            case Colour.yellow:
+                GetComponent<Renderer>().material.SetColor("_Color", new Color(1.0f, 0.75f, 0.35f, 1.0f));
+                break;
+            case Colour.green:
+                GetComponent<Renderer>().material.SetColor("_Color", new Color(0.5f, 1.0f, 0.5f, 1.0f));
+                break;
+            case Colour.blue:
+                GetComponent<Renderer>().material.SetColor("_Color", new Color(0.35f, 0.75f, 1.0f, 1.0f));
+                break;
+        }
+
+    }
+}
+
+

@@ -12,10 +12,6 @@ public class CreatedObjectController : MonoBehaviourPunCallbacks
     private XRDirectInteractor rightInteractor;
     List<IXRInteractable> grabInteractables = new List<IXRInteractable>();
 
-    public GameObject cubePrefab;
-    public GameObject spherePrefab;
-    public GameObject cylinderPrefab;
-
     public float scaleFactor;
     public Vector3 startPosition;
 
@@ -29,19 +25,6 @@ public class CreatedObjectController : MonoBehaviourPunCallbacks
     public void createObject(string objectType)
     {
         string createdObject = "Prefabs/Project/" + objectType;
-        /*
-        switch (objectType)
-        {
-            case "cube":
-                createdObject = "CreatedCube";
-                break;
-            case "sphere":
-                createdObject = spherePrefab;
-                break;
-            case "cylinder":
-                createdObject = cylinderPrefab;
-                break;
-        }*/
 
         PhotonNetwork.Instantiate(createdObject, startPosition, Quaternion.identity);
 
@@ -83,16 +66,16 @@ public class CreatedObjectController : MonoBehaviourPunCallbacks
             switch (color)
             {
                 case "red":
-                    interactable.transform.gameObject.GetComponent<Renderer>().material.SetColor("_Color", new Color(1.0f, 0.35f, 0.35f, 1.0f));
+                    interactable.transform.gameObject.GetComponent<CreatedObjectUpdate>().setColour(Colour.red);
                     break;
                 case "yellow":
-                    interactable.transform.gameObject.GetComponent<Renderer>().material.SetColor("_Color", new Color(1.0f, 0.75f, 0.35f, 1.0f));
+                    interactable.transform.gameObject.GetComponent<CreatedObjectUpdate>().setColour(Colour.yellow);
                     break;
                 case "green":
-                    interactable.transform.gameObject.GetComponent<Renderer>().material.SetColor("_Color", new Color(0.5f, 1.0f, 0.5f, 1.0f));
+                    interactable.transform.gameObject.GetComponent<CreatedObjectUpdate>().setColour(Colour.green);
                     break;
                 case "blue":
-                    interactable.transform.gameObject.GetComponent<Renderer>().material.SetColor("_Color", new Color(0.35f, 0.75f, 1.0f, 1.0f));
+                    interactable.transform.gameObject.GetComponent<CreatedObjectUpdate>().setColour(Colour.blue);
                     break;
             }
         }
