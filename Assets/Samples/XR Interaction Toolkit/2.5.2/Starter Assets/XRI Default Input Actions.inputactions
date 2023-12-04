@@ -2666,8 +2666,8 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "dd57f03a-41cc-4367-936b-71bef648ad13",
-                    "path": "<XRController>/trackpadClicked",
+                    "id": "a0c5a5ca-48a4-4550-b4d6-f312347b539e",
+                    "path": "<XRController>/{TriggerButton}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
