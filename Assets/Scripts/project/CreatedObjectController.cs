@@ -22,32 +22,56 @@ public class CreatedObjectController : MonoBehaviourPunCallbacks
         rightInteractor = rightController.GetComponent<XRDirectInteractor>();       
     }
 
-    public void createObject(string objectType)
+    public void createObject(string shape)
     {
-        string createdObject = "Prefabs/Project/" + objectType;
+        string createdObject = "Prefabs/Project/" + shape.ToString();
 
-        PhotonNetwork.Instantiate(createdObject, startPosition, Quaternion.identity);
+        GameObject gameObject = PhotonNetwork.Instantiate(createdObject, startPosition, Quaternion.identity);
 
+        switch (shape)
+        {
+            case "Cube":
+                gameObject.GetComponent<CreatedObject>().setShape(Shape.cube);
+                break;
+            case "Sphere":
+                gameObject.GetComponent<CreatedObject>().setShape(Shape.sphere);
+                break;
+            case "Cylinder":
+                gameObject.GetComponent<CreatedObject>().setShape(Shape.cylinder);
+                break;
+        }
+        
         //Instantiate(createdObject, startPosition, Quaternion.identity);
     }
 
 
     public void increaseSize()
     {
-        leftInteractor.GetValidTargets(grabInteractables);
-        rightInteractor.GetValidTargets(grabInteractables);
+        grabInteractables.Clear();
+        List<IXRInteractable> tempGrabInteractables = new List<IXRInteractable>();
+
+        leftInteractor.GetValidTargets(tempGrabInteractables);
+        grabInteractables.AddRange(tempGrabInteractables);
+        rightInteractor.GetValidTargets(tempGrabInteractables);
+        grabInteractables.AddRange(tempGrabInteractables);
 
         foreach (var interactable in grabInteractables)
         {
-            interactable.transform.gameObject.transform.localScale *= (1.1f);
-            interactable.transform.gameObject.GetComponent<Rigidbody>().mass *= (1.1f);
+            interactable.transform.gameObject.transform.localScale *= (1 + scaleFactor);
+            interactable.transform.gameObject.GetComponent<Rigidbody>().mass *= (1 + scaleFactor);
         }
+
     }
 
     public void reduceSize()
     {
-        leftInteractor.GetValidTargets(grabInteractables);
-        rightInteractor.GetValidTargets(grabInteractables);
+        grabInteractables.Clear();
+        List<IXRInteractable> tempGrabInteractables = new List<IXRInteractable>();
+
+        leftInteractor.GetValidTargets(tempGrabInteractables);
+        grabInteractables.AddRange(tempGrabInteractables);
+        rightInteractor.GetValidTargets(tempGrabInteractables);
+        grabInteractables.AddRange(tempGrabInteractables);
 
         foreach (var interactable in grabInteractables)
         {
@@ -58,24 +82,29 @@ public class CreatedObjectController : MonoBehaviourPunCallbacks
 
     public void colorObject(string color)
     {
-        leftInteractor.GetValidTargets(grabInteractables);
-        rightInteractor.GetValidTargets(grabInteractables);
+        grabInteractables.Clear();
+        List<IXRInteractable> tempGrabInteractables = new List<IXRInteractable>();
+
+        leftInteractor.GetValidTargets(tempGrabInteractables);
+        grabInteractables.AddRange(tempGrabInteractables);
+        rightInteractor.GetValidTargets(tempGrabInteractables);
+        grabInteractables.AddRange(tempGrabInteractables);
 
         foreach (var interactable in grabInteractables)
         {
             switch (color)
             {
                 case "red":
-                    interactable.transform.gameObject.GetComponent<CreatedObjectUpdate>().setColour(Colour.red);
+                    interactable.transform.gameObject.GetComponent<CreatedObject>().setColour(Colour.red);
                     break;
                 case "yellow":
-                    interactable.transform.gameObject.GetComponent<CreatedObjectUpdate>().setColour(Colour.yellow);
+                    interactable.transform.gameObject.GetComponent<CreatedObject>().setColour(Colour.yellow);
                     break;
                 case "green":
-                    interactable.transform.gameObject.GetComponent<CreatedObjectUpdate>().setColour(Colour.green);
+                    interactable.transform.gameObject.GetComponent<CreatedObject>().setColour(Colour.green);
                     break;
                 case "blue":
-                    interactable.transform.gameObject.GetComponent<CreatedObjectUpdate>().setColour(Colour.blue);
+                    interactable.transform.gameObject.GetComponent<CreatedObject>().setColour(Colour.blue);
                     break;
             }
         }

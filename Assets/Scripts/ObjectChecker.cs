@@ -10,25 +10,60 @@ public class ObjectChecker : MonoBehaviour
     public GameObject objectToBuild3;
     private bool object3Found;
 
-    public GameObject checkerPlate;
-
     // Start is called before the first frame update
     void Start()
     {
         tasksAchieved = false;
     }
 
-    void OnTriggerEnter(Collider other)
+    void Update()
     {
-        Renderer objectRenderer = other.gameObject.GetComponent<Renderer>();
-        if (objectToBuild1.GetComponent<CreatedObjectUpdate>().GetColour() == other.gameObject.GetComponent<CreatedObjectUpdate>().GetColour())
-        {
-            Debug.Log("PLACED ON");
-        }
-
-
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        // only check if not found already
+        // otherwise it will be overwritten
+        if (!object1Found)
+        {
+            object1Found = ColliderChecker(other, objectToBuild1);
+        }
+        if (!object2Found)
+        {
+            object2Found = ColliderChecker(other, objectToBuild2);
+        }
+        if (!object3Found)
+        {
+            object3Found = ColliderChecker(other, objectToBuild3);
+        }
+        CheckAllTasksAchieved();
+    }
+
+    private bool ColliderChecker(Collider other, GameObject objectToBuild)
+    {
+        bool value = false;
+        CreatedObject objectToBuildScript = objectToBuild.GetComponent<CreatedObject>();
+        CreatedObject otherScript = other.gameObject.GetComponent<CreatedObject>();
+
+        // check if colour is correct
+        if (objectToBuildScript.GetColour() == otherScript.GetColour())
+        {
+            // check if shape is correct
+            if (objectToBuildScript.GetShape() == otherScript.GetShape())
+            {
+                // check if size is correct
+                // round to two decimals
+                if (Mathf.Round(objectToBuild.gameObject.transform.localScale.x * 100f) / 100f == Mathf.Round(other.gameObject.transform.localScale.x * 100f) / 100f )
+                {
+                    other.gameObject.SetActive(false);
+                    value = true;
+                }
+            }
+        }
+        return value;
+    }
+
+    
     void CheckAllTasksAchieved()
     {
         // Check if all three tasks are achieved

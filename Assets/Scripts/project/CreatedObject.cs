@@ -12,9 +12,17 @@ public enum Colour
     blue
 }
 
-public class CreatedObjectUpdate : MonoBehaviour, IPunObservable
+public enum Shape
+{
+   cube,
+   sphere,
+   cylinder
+}
+
+public class CreatedObject : MonoBehaviour, IPunObservable
 {
     public Colour colour;
+    public Shape shape;
     // public Vector3 localScale;
 
     private PhotonView photonView;
@@ -65,6 +73,16 @@ public class CreatedObjectUpdate : MonoBehaviour, IPunObservable
     public Colour GetColour()
     {
         return colour;
+    }
+
+    public void setShape(Shape newShape)
+    {
+        shape = newShape;
+    }
+
+    public Shape GetShape()
+    {
+        return shape;
     }
 }
 
