@@ -1,6 +1,7 @@
 using UnityEngine;
+using Photon.Pun;
 
-public class ObjectChecker : MonoBehaviour
+public class ObjectChecker : MonoBehaviour, IPunObservable
 {
     private bool tasksAchieved;
     public GameObject objectToBuild1;
@@ -14,10 +15,6 @@ public class ObjectChecker : MonoBehaviour
     void Start()
     {
         tasksAchieved = false;
-    }
-
-    void Update()
-    {
     }
 
     private void OnTriggerStay(Collider other)
@@ -71,6 +68,18 @@ public class ObjectChecker : MonoBehaviour
         {
             tasksAchieved = true;
             Debug.Log("All tasks achieved!");
+        }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsReading)
+        {
+            tasksAchieved = (bool)stream.ReceiveNext();
+        }
+        else if (stream.IsWriting)
+        {
+            stream.SendNext(tasksAchieved);
         }
     }
 }

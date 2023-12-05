@@ -7,15 +7,16 @@ using Photon.Pun;
 public class StartGameLogic : MonoBehaviour, IPunObservable
 {
     public GameObject gameTable;
-    public GameObject description;
     public GameObject player2Uis;
 
+    public GameObject leftDescription;
+    public GameObject rightDescription;
 
     public GameObject leftStartButton;
     private bool leftStartReady = false;
     public GameObject rightStartButton;
     private bool rightStartReady = false;
-
+    
     public GameObject rightResetButton;
     public GameObject leftResetButton;
     private bool rightResetReady = false;
@@ -29,21 +30,24 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         rightResetButton.SetActive(false);
         leftResetButton.SetActive(false);
         gameTable.SetActive(false);
-        description.SetActive(false);
+        leftDescription.SetActive(false);
+        rightDescription.SetActive(false);
 
         player2Uis.SetActive(false);
     }
 
     void Update()
     {
+        Debug.Log(leftStartReady +", " + rightStartReady);
         if ((leftStartReady == true) && (rightStartReady == true)){
             StartGame();
         }
 
+        /*
         if ((rightResetReady == true) && (leftResetReady == true))
         {
             ResetGame();
-        }
+        }*/
     }
 
 
@@ -60,23 +64,27 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         leftStartReady = true;
     }
 
-    public void StartGame()
+    private void StartGame()
     {
         game1UiRenderer.gameHasStarted = true;
         PlaceGameObjects();
-        ResetGame();
     }
 
 
-    public void PlaceGameObjects()
+    private void PlaceGameObjects()
     {
+        leftDescription.SetActive(true);
+        rightDescription.SetActive(true);
+
+        leftStartButton.SetActive(false);
+        rightStartButton.SetActive(false);
+
         gameTable.SetActive(true);
-        description.SetActive(true);
         player2Uis.SetActive(true);
     }
 
 
-    public void ResetGame()
+    private void ResetGame()
     {
 
         // TODO RESET EVERYTHING TO BEGINNING... ?
