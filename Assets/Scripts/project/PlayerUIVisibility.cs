@@ -36,11 +36,15 @@ public class PlayerUIVisibility : MonoBehaviour
                         // Iterate through the list of child objects
                         foreach (GameObject childObject in childObjects)
                         {
+
+                            Debug.Log(childObject);
+
                             // Check if the child object is not null
                             if (childObject != null)
                             {
                                 // Disable the child object
                                 childObject.SetActive(true);
+
                             }
                         }
                     }
@@ -61,6 +65,7 @@ public class PlayerUIVisibility : MonoBehaviour
                             {
                                 // Disable the child object
                                 childObject.SetActive(false);
+
                             }
                         }
                     }
