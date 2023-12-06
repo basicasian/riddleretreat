@@ -12,9 +12,9 @@ public class StartGameLogic : MonoBehaviour
     public GameObject leftDescription;
     public GameObject rightDescription;
 
-    public GameObject leftStartButton;
+    //public GameObject leftStartButton;
     //public bool leftStartReady = false;
-    public GameObject rightStartButton;
+    //public GameObject rightStartButton;
     //public bool rightStartReady = false;
     
     public GameObject rightResetButton;
@@ -25,6 +25,10 @@ public class StartGameLogic : MonoBehaviour
     bool[] startReady = new bool[2];
 
     public Game1UiRenderer game1UiRenderer;
+
+
+
+    public GameObject[] walls;
 
     // Start is called before the first frame update
     void Start()
@@ -40,10 +44,34 @@ public class StartGameLogic : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(leftStartButton.GetComponent<ButtonController>().isClicked + ", " + rightStartButton.GetComponent<ButtonController>().isClicked);
-        if ((leftStartButton.GetComponent<ButtonController>().isClicked == true) && (rightStartButton.GetComponent<ButtonController>().isClicked == true)){
-            StartGame();
+
+        /*
+        walls = GameObject.FindGameObjectsWithTag("ButtonWall");
+
+        if (walls != null && walls.Length == 2)
+        {
+            int counter = 0; 
+            foreach (GameObject wall in walls)
+            {
+                if (wall.GetComponent<ButtonController>().isClicked)
+                {
+                    counter++;
+                }
+
+            }
+            if (counter == 2)
+            {
+                StartGame();
+                counter = 0;
+            }
+
         }
+        */
+        /*
+        Debug.Log(leftStartButton.GetComponent<ButtonController>().isClicked + ", " + rightStartButton.GetComponent<ButtonController>().isClicked);
+        if ((leftStartButton.GetComponent<ButtonController>().isClicked == true) || (rightStartButton.GetComponent<ButtonController>().isClicked == true)){
+            StartGame();
+        }*/
 
         /*
         if ((rightResetReady == true) && (leftResetReady == true))

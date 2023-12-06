@@ -6,7 +6,7 @@ using Photon.Pun;
 public class ButtonController : MonoBehaviour, IPunObservable
 {
     public bool isClicked;
-    GameObject button;
+    public GameObject button;
 
     // Start is called before the first frame update
     void Start()
@@ -21,11 +21,17 @@ public class ButtonController : MonoBehaviour, IPunObservable
         {
             button.SetActive(false);
         }
+
     }
 
     public void SetIsClicked()
     {
-        isClicked = true;
+        if (!isClicked)
+        {
+            isClicked = true;
+        }
+        
+        Debug.Log(isClicked);
     }
 
 

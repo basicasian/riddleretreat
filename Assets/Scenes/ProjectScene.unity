@@ -6997,9 +6997,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1069256174}
-        m_TargetAssemblyTypeName: StartGameLogic, Assembly-CSharp
-        m_MethodName: SetLeftReady
+      - m_Target: {fileID: 800627548}
+        m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
+        m_MethodName: SetIsClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19433,9 +19433,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1069256174}
-        m_TargetAssemblyTypeName: StartGameLogic, Assembly-CSharp
-        m_MethodName: SetRightReady
+      - m_Target: {fileID: 2142802123}
+        m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
+        m_MethodName: SetIsClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
