@@ -22,7 +22,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
     private bool rightResetReady = false;
     private bool leftResetReady = false;
 
-    bool[] startReady;
+    bool[] startReady = new bool[2];
 
     public Game1UiRenderer game1UiRenderer;
 
