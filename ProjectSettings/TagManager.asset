@@ -15,6 +15,7 @@ TagManager:
   - Poison
   - GameTable
   - ButtonWall
+  - Button
   layers:
   - Default
   - TransparentFX

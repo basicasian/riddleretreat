@@ -28,7 +28,7 @@ public class StartGameLogic : MonoBehaviour
 
 
 
-    public GameObject[] walls;
+    public GameObject[] buttons;
 
     // Start is called before the first frame update
     void Start()
@@ -45,14 +45,14 @@ public class StartGameLogic : MonoBehaviour
     void Update()
     {
 
-        walls = GameObject.FindGameObjectsWithTag("ButtonWall");
+        buttons = GameObject.FindGameObjectsWithTag("Button");
 
-        if (walls != null && walls.Length > 0)
+        if (buttons != null && buttons.Length > 0)
         {
             int counter = 0; 
-            foreach (GameObject wall in walls)
+            foreach (GameObject button in buttons)
             {
-                if (wall.GetComponent<ButtonController>().isClicked)
+                if (button.GetComponent<ButtonController>().isClicked)
                 {
                     StartGame();
                 }
