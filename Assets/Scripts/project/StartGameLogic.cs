@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 
 
-public class StartGameLogic : MonoBehaviour, IPunObservable
+public class StartGameLogic : MonoBehaviour
 {
     public GameObject gameTable;
     public GameObject player2Uis;
@@ -13,9 +13,9 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
     public GameObject rightDescription;
 
     public GameObject leftStartButton;
-    public bool leftStartReady = false;
+    //public bool leftStartReady = false;
     public GameObject rightStartButton;
-    public bool rightStartReady = false;
+    //public bool rightStartReady = false;
     
     public GameObject rightResetButton;
     public GameObject leftResetButton;
@@ -40,8 +40,8 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
 
     void Update()
     {
-        Debug.Log(leftStartReady +", " + rightStartReady);
-        if ((leftStartReady == true) && (rightStartReady == true)){
+        Debug.Log(leftStartButton.GetComponent<ButtonController>().isClicked + ", " + rightStartButton.GetComponent<ButtonController>().isClicked);
+        if ((leftStartButton.GetComponent<ButtonController>().isClicked == true) && (rightStartButton.GetComponent<ButtonController>().isClicked == true)){
             StartGame();
         }
 
@@ -52,7 +52,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         }*/
     }
 
-
+    /*
     public void SetRightReady()
     {
         rightStartButton.SetActive(false);
@@ -65,7 +65,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         leftStartButton.SetActive(false);
         leftStartReady = true;
     }
-
+    */
     private void StartGame()
     {
         game1UiRenderer.gameHasStarted = true;
@@ -85,7 +85,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         player2Uis.SetActive(true);
     }
 
-
+    /*
     private void ResetGame()
     {
 
@@ -119,6 +119,6 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
 
             stream.SendNext(startReady);
         }
-    }
+    }*/
 
 }
