@@ -105,10 +105,10 @@ public class StartGameLogic : MonoBehaviour
     {
         leftDescription.SetActive(true);
         rightDescription.SetActive(true);
-
+        /*
         leftStartButton.SetActive(false);
         rightStartButton.SetActive(false);
-
+        */
         gameTable.SetActive(true);
         player2Uis.SetActive(true);
     }
