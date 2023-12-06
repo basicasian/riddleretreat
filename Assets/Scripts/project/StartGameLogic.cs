@@ -13,14 +13,16 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
     public GameObject rightDescription;
 
     public GameObject leftStartButton;
-    private bool leftStartReady = false;
+    public bool leftStartReady = false;
     public GameObject rightStartButton;
-    private bool rightStartReady = false;
+    public bool rightStartReady = false;
     
     public GameObject rightResetButton;
     public GameObject leftResetButton;
     private bool rightResetReady = false;
     private bool leftResetReady = false;
+
+    bool[] startReady;
 
     public Game1UiRenderer game1UiRenderer;
 
@@ -101,16 +103,21 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
+
+        startReady[0] = leftStartReady;
+        startReady[1] = rightStartReady;
+
         if (stream.IsReading)
         {
-            leftStartReady = (bool)stream.ReceiveNext();
-            rightStartReady = (bool)stream.ReceiveNext();
+            startReady = (bool[])stream.ReceiveNext();
 
+            leftStartReady = startReady[0];
+            rightStartReady = startReady[1];
         }
         else if (stream.IsWriting)
         {
-            stream.SendNext(leftStartReady);
-            stream.SendNext(rightStartReady);
+
+            stream.SendNext(startReady);
         }
     }
 
