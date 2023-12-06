@@ -45,28 +45,27 @@ public class StartGameLogic : MonoBehaviour
     void Update()
     {
 
-        /*
         walls = GameObject.FindGameObjectsWithTag("ButtonWall");
 
-        if (walls != null && walls.Length == 2)
+        if (walls != null && walls.Length > 0)
         {
             int counter = 0; 
             foreach (GameObject wall in walls)
             {
                 if (wall.GetComponent<ButtonController>().isClicked)
                 {
-                    counter++;
+                    StartGame();
                 }
 
             }
+            /*
             if (counter == 2)
             {
                 StartGame();
                 counter = 0;
-            }
+            }*/
 
         }
-        */
         /*
         Debug.Log(leftStartButton.GetComponent<ButtonController>().isClicked + ", " + rightStartButton.GetComponent<ButtonController>().isClicked);
         if ((leftStartButton.GetComponent<ButtonController>().isClicked == true) || (rightStartButton.GetComponent<ButtonController>().isClicked == true)){

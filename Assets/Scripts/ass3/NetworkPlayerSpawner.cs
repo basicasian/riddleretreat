@@ -7,13 +7,13 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
 {
     private GameObject spawnedPlayerPrefab;
     public GameObject spawnedHelperPrefab;
-    public GameObject spawnedWall;
+    private GameObject spawnedWall;
 
     public GameObject xrOrigin;
     private GameLogic gameLogic;
     public Vector3 playerPosition = new Vector3(3, 0, -5);
     public Vector3 helperPosition = new Vector3(3, 0, -2);
-    public Vector3 wallPosition = new Vector3(-2.5f, 1, -4.5f);
+    public Vector3 wallPosition = new Vector3(2.5f, 1, 4.5f);
 
 
     public void Start()
