@@ -90,18 +90,17 @@ public class StartGameLogic : MonoBehaviour
         {
             btn.SetActive(false);
         }
+        foreach (GameObject btnWall in buttonWalls)
+        {
+            btnWall.GetComponent<ButtonController>().isTouched = false;
+        }
     }
 
     public void ResetGame()
     {
         // reset visibilities
-        if (gameTable.activeSelf)
-        {
-            gameTable.SetActive(false);
-        }
+        gameTable.SetActive(false);
         player2Uis.SetActive(false);
-
-        startButtons = GameObject.FindGameObjectsWithTag("StartButton");
         foreach (GameObject btn in startButtons)
         {
             btn.SetActive(true);
