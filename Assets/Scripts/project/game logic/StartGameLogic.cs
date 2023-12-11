@@ -5,7 +5,7 @@ using Photon.Pun;
 using Unity.XR.CoreUtils;
 
 
-public class StartGameLogic : MonoBehaviour
+public class StartGameLogic : MonoBehaviour, IPunObservable
 {
     public bool isPlaying = false;
     public bool isReset = false;
@@ -90,7 +90,7 @@ public class StartGameLogic : MonoBehaviour
         gameTable.SetActive(true);
         player2Uis.SetActive(true);
 
-        startButtons = GameObject.FindGameObjectsWithTag("StartButton");
+       
         foreach (GameObject btn in startButtons)
         {
             btn.SetActive(false);
@@ -106,6 +106,7 @@ public class StartGameLogic : MonoBehaviour
         // reset visibilities
         gameTable.SetActive(false);
         player2Uis.SetActive(false);
+        startButtons = GameObject.FindGameObjectsWithTag("StartButton");
         foreach (GameObject btn in startButtons)
         {
             btn.SetActive(true);
