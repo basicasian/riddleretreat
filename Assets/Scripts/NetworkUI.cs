@@ -6,13 +6,19 @@ using Photon.Realtime;
 
 public class NetworkUI : MonoBehaviourPunCallbacks
 {
+    //public bool isConnectedToServer = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        //ConnectToServer();
+        ConnectToServer();
     }
 
-    // Update is called once per frame
+    private void Update()
+    {
+        
+    }
+
     public void ConnectToServer()
     {
         PhotonNetwork.ConnectUsingSettings();
