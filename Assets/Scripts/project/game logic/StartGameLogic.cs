@@ -8,7 +8,8 @@ using Unity.XR.CoreUtils;
 public class StartGameLogic : MonoBehaviour
 {
     public bool isPlaying = false;
- 
+    public bool isReset = false;
+
     private GameObject[] startButtons;
     private GameObject[] buttonWalls;
 
@@ -41,6 +42,10 @@ public class StartGameLogic : MonoBehaviour
 
     void Update()
     {
+        if (isReset)
+        {
+            ResetGame();
+        }
 
         // check if player touches button at the same time
         if (!isPlaying)
@@ -96,7 +101,7 @@ public class StartGameLogic : MonoBehaviour
         }
     }
 
-    public void ResetGame()
+    private void ResetGame()
     {
         // reset visibilities
         gameTable.SetActive(false);
@@ -121,6 +126,23 @@ public class StartGameLogic : MonoBehaviour
 
         // reset game status
         isPlaying = false;
+    }
+
+    public void setResetGame(bool value)
+    {
+        isReset = value;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsReading)
+        {
+            isReset = (bool)stream.ReceiveNext();
+        }
+        else if (stream.IsWriting)
+        {
+            stream.SendNext(isReset);
+        }
     }
 
 

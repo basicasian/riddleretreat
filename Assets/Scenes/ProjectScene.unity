@@ -1790,15 +1790,15 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1069256174}
         m_TargetAssemblyTypeName: StartGameLogic, Assembly-CSharp
-        m_MethodName: ResetGame
-        m_Mode: 1
+        m_MethodName: setResetGame
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &231514232
 MonoBehaviour:
@@ -8707,6 +8707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlaying: 0
+  isReset: 0
   gameTable: {fileID: 339484949}
   player2Uis: {fileID: 2048819201}
   game1UiRenderer: {fileID: 1193645458}
