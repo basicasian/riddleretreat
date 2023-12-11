@@ -15,10 +15,11 @@ public class StartGameLogic : MonoBehaviour
     private GameObject[] resetButtons;
 
     private GameObject[] buttonWalls;
-    public bool gameStarted = false;
+    public bool isPlaying = false;
 
     public GameObject leftController;
     public GameObject rightController;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,31 +30,30 @@ public class StartGameLogic : MonoBehaviour
 
     void Update()
     {
-        if (gameStarted)
-        {
-            return;
-        }
 
-        buttonWalls = GameObject.FindGameObjectsWithTag("ButtonWall");
-
-        if (buttonWalls != null && buttonWalls.Length != 0)
+        // check if player touches button at the same time
+        if (!isPlaying)
         {
-            int counter = 0;
-            foreach (GameObject btnWall in buttonWalls)
+            buttonWalls = GameObject.FindGameObjectsWithTag("ButtonWall");
+
+            if (buttonWalls != null && buttonWalls.Length != 0)
             {
-                if (btnWall.GetComponent<ButtonController>().isTouched)
+                int counter = 0;
+                foreach (GameObject btnWall in buttonWalls)
                 {
-                    counter++;
-                } 
-            }
+                    if (btnWall.GetComponent<ButtonController>().isTouched)
+                    {
+                        counter++;
+                    }
+                }
 
-            if (counter == PhotonNetwork.PlayerList.Length)
-            {
-                StartGame();
-                gameStarted = true;
+                if (counter == PhotonNetwork.PlayerList.Length)
+                {
+                    StartGame();
+                    isPlaying = true;
+                }
             }
         }
-
         /*
         if ((rightResetReady == true) && (leftResetReady == true))
         {
@@ -67,6 +67,7 @@ public class StartGameLogic : MonoBehaviour
         Debug.Log("Start Game");
         game1UiRenderer.gameHasStarted = true;
 
+        // send impulse
         leftController.GetComponent<HapticFeedbackOnHover>().StartHapticPulse();
         rightController.GetComponent<HapticFeedbackOnHover>().StartHapticPulse();
 

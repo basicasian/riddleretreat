@@ -3,13 +3,16 @@ using Photon.Pun;
 
 public class ObjectChecker : MonoBehaviour, IPunObservable
 {
-    private bool tasksAchieved;
+    public bool tasksAchieved;
     public GameObject objectToBuild1;
     private bool object1Found;
     public GameObject objectToBuild2;
     private bool object2Found;
     public GameObject objectToBuild3;
     private bool object3Found;
+
+    public GameObject leftController;
+    public GameObject rightController;
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +71,10 @@ public class ObjectChecker : MonoBehaviour, IPunObservable
         {
             tasksAchieved = true;
             Debug.Log("All tasks achieved!");
+
+            // send impulse
+            leftController.GetComponent<HapticFeedbackOnHover>().StartHapticPulse();
+            rightController.GetComponent<HapticFeedbackOnHover>().StartHapticPulse();
         }
     }
 
