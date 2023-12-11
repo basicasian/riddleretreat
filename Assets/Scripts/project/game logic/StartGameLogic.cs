@@ -11,12 +11,14 @@ public class StartGameLogic : MonoBehaviour
 
     public Game1UiRenderer game1UiRenderer;
 
-    public GameObject[] startButtons;
-    public GameObject[] resetButtons;
-    public GameObject[] backDescriptions;
+    private GameObject[] startButtons;
+    private GameObject[] resetButtons;
 
-    public GameObject[] buttonWalls;
+    private GameObject[] buttonWalls;
     public bool gameStarted = false;
+
+    public GameObject leftController;
+    public GameObject rightController;
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +66,10 @@ public class StartGameLogic : MonoBehaviour
     {
         Debug.Log("Start Game");
         game1UiRenderer.gameHasStarted = true;
+
+        leftController.GetComponent<HapticFeedbackOnHover>().StartHapticPulse();
+        rightController.GetComponent<HapticFeedbackOnHover>().StartHapticPulse();
+
         PlaceGameObjects();
     }
 
