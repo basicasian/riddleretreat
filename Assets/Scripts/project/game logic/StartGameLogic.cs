@@ -51,7 +51,6 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         if (!isPlaying)
         {
             buttonWalls = GameObject.FindGameObjectsWithTag("ButtonWall");
-
             if (buttonWalls != null && buttonWalls.Length != 0)
             {
                 int counter = 0;
@@ -90,7 +89,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         gameTable.SetActive(true);
         player2Uis.SetActive(true);
 
-       
+        startButtons = GameObject.FindGameObjectsWithTag("StartButton");
         foreach (GameObject btn in startButtons)
         {
             btn.SetActive(false);
@@ -106,7 +105,6 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         // reset visibilities
         gameTable.SetActive(false);
         player2Uis.SetActive(false);
-        startButtons = GameObject.FindGameObjectsWithTag("StartButton");
         foreach (GameObject btn in startButtons)
         {
             btn.SetActive(true);
@@ -127,6 +125,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
 
         // reset game status
         isPlaying = false;
+        isReset = false;
     }
 
     public void setResetGame(bool value)
