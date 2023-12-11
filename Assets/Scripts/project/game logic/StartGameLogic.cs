@@ -9,48 +9,46 @@ public class StartGameLogic : MonoBehaviour
     public GameObject gameTable;
     public GameObject player2Uis;
 
-    public GameObject leftDescription;
-    public GameObject rightDescription;
-
-    //public GameObject leftStartButton;
-    //public bool leftStartReady = false;
-    //public GameObject rightStartButton;
-    //public bool rightStartReady = false;
-    
-    public GameObject rightResetButton;
-    public GameObject leftResetButton;
-    private bool rightResetReady = false;
-    private bool leftResetReady = false;
-
-    bool[] startReady = new bool[2];
-
     public Game1UiRenderer game1UiRenderer;
 
-    public GameObject[] buttons;
+    public GameObject[] startButtons;
+    public GameObject[] resetButtons;
+    public GameObject[] backDescriptions;
 
-    public 
+    public GameObject[] buttonWalls;
+    public bool gameStarted = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        rightResetButton.SetActive(false);
-        leftResetButton.SetActive(false);
         gameTable.SetActive(false);
-        leftDescription.SetActive(false);
-        rightDescription.SetActive(false);
-
         player2Uis.SetActive(false);
     }
 
     void Update()
     {
-
-        buttons = GameObject.FindGameObjectsWithTag("ButtonWall");
-
-        if (buttons != null && buttons.Length == 2)
+        if (gameStarted)
         {
-            if (buttons[0].GetComponent<ButtonController>().isClicked && buttons[1].GetComponent<ButtonController>().isClicked)
+            return;
+        }
+
+        buttonWalls = GameObject.FindGameObjectsWithTag("ButtonWall");
+
+        if (buttonWalls != null && buttonWalls.Length != 0)
+        {
+            int counter = 0;
+            foreach (GameObject btnWall in buttonWalls)
+            {
+                if (btnWall.GetComponent<ButtonController>().isTouched)
+                {
+                    counter++;
+                } 
+            }
+
+            if (counter == PhotonNetwork.PlayerList.Length)
             {
                 StartGame();
+                gameStarted = true;
             }
         }
 
@@ -64,6 +62,7 @@ public class StartGameLogic : MonoBehaviour
 
     private void StartGame()
     {
+        Debug.Log("Start Game");
         game1UiRenderer.gameHasStarted = true;
         PlaceGameObjects();
     }
@@ -71,10 +70,14 @@ public class StartGameLogic : MonoBehaviour
 
     private void PlaceGameObjects()
     {
-        leftDescription.SetActive(true);
-        rightDescription.SetActive(true);
         gameTable.SetActive(true);
         player2Uis.SetActive(true);
+
+        startButtons = GameObject.FindGameObjectsWithTag("StartButton");
+        foreach (GameObject btn in startButtons)
+        {
+            btn.SetActive(false);
+        }
     }
 
     /*

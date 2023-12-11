@@ -6,7 +6,7 @@ using UnityEngine;
 public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
 {
     private GameObject spawnedPlayerPrefab;
-    public GameObject spawnedHelperPrefab;
+    private GameObject spawnedHelperPrefab;
     private GameObject spawnedWall;
 
     public GameObject xrOrigin;
@@ -51,5 +51,10 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
         PhotonNetwork.Destroy(spawnedPlayerPrefab);
         PhotonNetwork.Destroy(spawnedHelperPrefab);
         PhotonNetwork.Destroy(spawnedWall);
+    }
+
+    public GameObject GetHelperObject()
+    {
+        return spawnedHelperPrefab;
     }
 }

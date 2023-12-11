@@ -5,30 +5,18 @@ using Photon.Pun;
 
 public class ButtonController : MonoBehaviour, IPunObservable
 {
-    public bool isClicked;
-    public GameObject button;
-
-    private PhotonView photonView;
+    public bool isTouched = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        photonView = GetComponent<PhotonView>();
+     
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isClicked)
-        {
-            button.SetActive(false);
-        }
 
-    }
-
-    public void SetIsClicked(bool value)
-    {
-        isClicked = value;
     }
 
 
@@ -36,11 +24,11 @@ public class ButtonController : MonoBehaviour, IPunObservable
     {
         if (stream.IsReading)
         {
-            isClicked = (bool)stream.ReceiveNext();
+            isTouched = (bool)stream.ReceiveNext();
         }
         else if (stream.IsWriting)
         {
-            stream.SendNext(isClicked);
+            stream.SendNext(isTouched);
         }
     }
 }

@@ -20,7 +20,8 @@ public class DirectTouchController : MonoBehaviour
         // if touch start button
         if (name == "StartButton" && buttonControllerScript != null)
         {
-            buttonControllerScript.isClicked = true;
+            buttonControllerScript.isTouched = true;
+            GetComponent<Image>().color = new Color(0.8f, 0.8f, 0.8f, 1);
         }
     }
 
@@ -29,7 +30,8 @@ public class DirectTouchController : MonoBehaviour
         // if touch start button
         if (name == "StartButton" && buttonControllerScript != null)
         {
-            buttonControllerScript.isClicked = false;
-        }
+            buttonControllerScript.isTouched = false;
+            GetComponent<Image>().color = Color.white;
+    }
     }
 }

@@ -50,7 +50,11 @@ public class PlayerPoisonRestriction : MonoBehaviour
                 if (col.CompareTag(tag1))
                 {
                     xrOrigin.transform.position = networkPlayerSpawnerScript.playerPosition;
-                    networkPlayerSpawnerScript.spawnedHelperPrefab.transform.position = networkPlayerSpawnerScript.helperPosition;
+                    GameObject helperObject = networkPlayerSpawnerScript.GetHelperObject();
+                    if (helperObject != null)
+                    {
+                        helperObject.transform.position = networkPlayerSpawnerScript.helperPosition;
+                    }
                 }
             }
 
