@@ -674,7 +674,6 @@ GameObject:
   - component: {fileID: 7169035954572314261}
   - component: {fileID: 7169035954572314260}
   - component: {fileID: 7169035954572314267}
-  - component: {fileID: 1822062396324194958}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Button
@@ -785,7 +784,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1822062396324194958}
+      - m_Target: {fileID: 3738766495367326215}
         m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
         m_MethodName: SetIsClicked
         m_Mode: 1
@@ -797,20 +796,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1822062396324194958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7169035954572314266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ee15b057cada4e47880909014d249d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isClicked: 0
-  button: {fileID: 7169035954572314266}
 --- !u!1 &7169035954891939483
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,7 +944,8 @@ GameObject:
   - component: {fileID: 7169035954976934178}
   - component: {fileID: 7169035954976934176}
   - component: {fileID: 7169035954976934204}
-  - component: {fileID: 7617094426373361085}
+  - component: {fileID: 4051110304050477148}
+  - component: {fileID: 3738766495367326215}
   m_Layer: 0
   m_Name: ButtonWall
   m_TagString: ButtonWall
@@ -1063,7 +1049,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7617094426373361085
+--- !u!114 &4051110304050477148
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1081,10 +1067,25 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 3738766495367326215}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &3738766495367326215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7169035954976934182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ee15b057cada4e47880909014d249d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isClicked: 0
+  button: {fileID: 7169035954572314266}
 --- !u!1 &7169035955801505110
 GameObject:
   m_ObjectHideFlags: 0
