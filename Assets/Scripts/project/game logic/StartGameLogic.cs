@@ -9,6 +9,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
 {
     public bool isPlaying = false;
     public bool isReset = false;
+    public bool tempBool = false;
 
     private GameObject[] startButtons;
     private GameObject[] buttonWalls;
@@ -123,9 +124,12 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         // reset tasks achieved
         objectCheckerScript.tasksAchieved = false;
 
+        System.Threading.Thread.Sleep(50);
+
         // reset game status
         isPlaying = false;
         isReset = false;
+
     }
 
     public void setResetGame(bool value)
