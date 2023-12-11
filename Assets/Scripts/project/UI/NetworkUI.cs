@@ -11,7 +11,7 @@ public class NetworkUI : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        ConnectToServer();
+        //ConnectToServer();
     }
 
     private void Update()
@@ -35,7 +35,6 @@ public class NetworkUI : MonoBehaviourPunCallbacks
                 Debug.Log("Disconnected from Server!");
             }
         }
-
     }
 
 
@@ -62,5 +61,17 @@ public class NetworkUI : MonoBehaviourPunCallbacks
     {
         Debug.Log("New Player entered the Room!");
         base.OnPlayerEnteredRoom(newPlayer);
+    }
+
+    public void ExitGame()
+    {
+        Debug.Log("Exit Game!");
+
+        #if UNITY_STANDALONE
+        Application.Quit();
+        #endif  
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #endif
     }
 }

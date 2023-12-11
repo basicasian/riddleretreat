@@ -10,6 +10,8 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
     private GameObject spawnedWall;
 
     public GameObject xrOrigin;
+    public GameObject lobby;
+
     private GameLogic gameLogic;
     public Vector3 playerPosition = new Vector3(3, 0, -5);
     public Vector3 helperPosition = new Vector3(3, 0, -2);
@@ -21,6 +23,8 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
+
+        lobby.SetActive(true);
 
         // player position
         // depends on sign assigned left or right
@@ -48,9 +52,20 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
     public override void OnLeftRoom()
     {
         base.OnLeftRoom();
-        PhotonNetwork.Destroy(spawnedPlayerPrefab);
-        PhotonNetwork.Destroy(spawnedHelperPrefab);
-        PhotonNetwork.Destroy(spawnedWall);
+
+        if (spawnedPlayerPrefab != null)
+        {
+            PhotonNetwork.Destroy(spawnedPlayerPrefab);
+        }
+        if (spawnedHelperPrefab != null)
+        {
+            PhotonNetwork.Destroy(spawnedHelperPrefab);
+        }
+        if (spawnedWall != null)
+        {
+            PhotonNetwork.Destroy(spawnedWall);
+        }
+        lobby.SetActive(false);
     }
 
     public GameObject GetHelperObject()

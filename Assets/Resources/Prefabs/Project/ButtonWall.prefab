@@ -800,7 +800,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallGameObject: {fileID: 7169035954976934182}
-  startGameLogic: {fileID: 0}
 --- !u!65 &8314119381378891925
 BoxCollider:
   m_ObjectHideFlags: 0
