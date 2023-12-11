@@ -48,17 +48,11 @@ public class StartGameLogic : MonoBehaviour
 
         if (buttons != null && buttons.Length == 2)
         {
-
             if (buttons[0].GetComponent<ButtonController>().isClicked && buttons[1].GetComponent<ButtonController>().isClicked)
             {
                 StartGame();
             }
         }
-        /*
-        Debug.Log(leftStartButton.GetComponent<ButtonController>().isClicked + ", " + rightStartButton.GetComponent<ButtonController>().isClicked);
-        if ((leftStartButton.GetComponent<ButtonController>().isClicked == true) || (rightStartButton.GetComponent<ButtonController>().isClicked == true)){
-            StartGame();
-        }*/
 
         /*
         if ((rightResetReady == true) && (leftResetReady == true))
@@ -67,20 +61,7 @@ public class StartGameLogic : MonoBehaviour
         }*/
     }
 
-    /*
-    public void SetRightReady()
-    {
-        rightStartButton.SetActive(false);
-        rightStartReady = true;
-    }
 
-
-    public void SetLeftReady()
-    {
-        leftStartButton.SetActive(false);
-        leftStartReady = true;
-    }
-    */
     private void StartGame()
     {
         game1UiRenderer.gameHasStarted = true;
@@ -92,10 +73,6 @@ public class StartGameLogic : MonoBehaviour
     {
         leftDescription.SetActive(true);
         rightDescription.SetActive(true);
-        /*
-        leftStartButton.SetActive(false);
-        rightStartButton.SetActive(false);
-        */
         gameTable.SetActive(true);
         player2Uis.SetActive(true);
     }

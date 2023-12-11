@@ -15,7 +15,6 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
     public Vector3 helperPosition = new Vector3(3, 0, -2);
     public Vector3 wallPosition = new Vector3(2.5f, 1, 4.5f);
 
-
     public void Start()
     {
     }

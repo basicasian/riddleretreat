@@ -26,14 +26,9 @@ public class ButtonController : MonoBehaviour, IPunObservable
 
     }
 
-    public void SetIsClicked()
+    public void SetIsClicked(bool value)
     {
-        if (!isClicked)
-        {
-            isClicked = true;
-        }
-        
-        Debug.Log(isClicked);
+        isClicked = value;
     }
 
 
