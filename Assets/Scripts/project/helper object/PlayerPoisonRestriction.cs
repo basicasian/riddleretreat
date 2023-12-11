@@ -10,7 +10,6 @@ public class PlayerPoisonRestriction : MonoBehaviour
     public Camera mainCamera = null;
     public XROrigin xrOrigin = null;
 
-
     public GameObject networkManager;
     private NetworkPlayerSpawner networkPlayerSpawnerScript;
 

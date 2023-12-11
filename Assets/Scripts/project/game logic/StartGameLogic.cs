@@ -2,23 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Unity.XR.CoreUtils;
 
 
 public class StartGameLogic : MonoBehaviour
 {
+    public bool isPlaying = false;
+ 
+    private GameObject[] startButtons;
+    private GameObject[] buttonWalls;
+
+    // for visibility
     public GameObject gameTable;
     public GameObject player2Uis;
-
     public Game1UiRenderer game1UiRenderer;
 
-    private GameObject[] startButtons;
-    private GameObject[] resetButtons;
-
-    private GameObject[] buttonWalls;
-    public bool isPlaying = false;
-
+    // for haptic feedback
     public GameObject leftController;
     public GameObject rightController;
+
+    // for reset
+    public XROrigin xrOrigin = null;
+    public GameObject networkManager;
+    private NetworkPlayerSpawner networkPlayerSpawnerScript;
+    public GameObject checkerPlate;
+    private ObjectChecker objectCheckerScript;
 
 
     // Start is called before the first frame update
@@ -26,6 +34,9 @@ public class StartGameLogic : MonoBehaviour
     {
         gameTable.SetActive(false);
         player2Uis.SetActive(false);
+
+        networkPlayerSpawnerScript = networkManager.GetComponent<NetworkPlayerSpawner>();
+        objectCheckerScript = checkerPlate.GetComponent<ObjectChecker>();   
     }
 
     void Update()
@@ -54,11 +65,6 @@ public class StartGameLogic : MonoBehaviour
                 }
             }
         }
-        /*
-        if ((rightResetReady == true) && (leftResetReady == true))
-        {
-            ResetGame();
-        }*/
     }
 
 
@@ -85,6 +91,39 @@ public class StartGameLogic : MonoBehaviour
             btn.SetActive(false);
         }
     }
+
+    public void ResetGame()
+    {
+        // reset visibilities
+        if (gameTable.activeSelf)
+        {
+            gameTable.SetActive(false);
+        }
+        player2Uis.SetActive(false);
+
+        startButtons = GameObject.FindGameObjectsWithTag("StartButton");
+        foreach (GameObject btn in startButtons)
+        {
+            btn.SetActive(true);
+        }
+
+        // reset player position
+        xrOrigin.transform.position = networkPlayerSpawnerScript.playerPosition;
+
+        // reset helper object position
+        GameObject helperObject = networkPlayerSpawnerScript.GetHelperObject();
+        if (helperObject != null)
+        {
+            helperObject.transform.position = networkPlayerSpawnerScript.helperPosition;
+        }
+
+        // reset tasks achieved
+        objectCheckerScript.tasksAchieved = false;
+
+        // reset game status
+        isPlaying = false;
+    }
+
 
     /*
     private void ResetGame()

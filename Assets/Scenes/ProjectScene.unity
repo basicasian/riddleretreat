@@ -804,7 +804,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.0558}
+  m_AnchoredPosition: {x: 0, y: 0.021000002}
   m_SizeDelta: {x: 90, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &81988288
@@ -1607,7 +1607,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.0029}
+  m_AnchoredPosition: {x: 0, y: 0.02}
   m_SizeDelta: {x: 90, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &225328875
@@ -1741,7 +1741,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.1793}
+  m_AnchoredPosition: {x: 0, y: 0.15100001}
   m_SizeDelta: {x: 90, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &231514231
@@ -1788,9 +1788,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1063487580}
-        m_TargetAssemblyTypeName: NetworkUI, Assembly-CSharp
-        m_MethodName: ExitGame
+      - m_Target: {fileID: 1069256174}
+        m_TargetAssemblyTypeName: StartGameLogic, Assembly-CSharp
+        m_MethodName: ResetGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2393,7 +2393,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &339484950
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3756,7 +3756,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &421537591
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3775,7 +3775,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.1171}
+  m_AnchoredPosition: {x: 0, y: 0.083}
   m_SizeDelta: {x: 90, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &421537592
@@ -6558,7 +6558,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855103910}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -38.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6567,7 +6567,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 174.3, y: 109.5}
+  m_AnchoredPosition: {x: 155.6, y: 87.3}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &855103912
@@ -8555,6 +8555,7 @@ MonoBehaviour:
   xrOrigin: {fileID: 131329519}
   lobby: {fileID: 1395164905}
   exitButtonWrist: {fileID: 421537590}
+  connectButtonWrist: {fileID: 225328873}
   disconnectButtonWrist: {fileID: 81988286}
   resetButtonWrist: {fileID: 231514229}
   playerPosition: {x: 3, y: 0, z: -5}
@@ -8670,7 +8671,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069256171}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8362f161597c74429ed60e9977e320d, type: 3}
   m_Name: 
@@ -8705,12 +8706,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1301c0127d6b1294bb63a4d1d698eb60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlaying: 0
   gameTable: {fileID: 339484949}
   player2Uis: {fileID: 2048819201}
   game1UiRenderer: {fileID: 1193645458}
-  isPlaying: 0
   leftController: {fileID: 648693329}
   rightController: {fileID: 265516653}
+  xrOrigin: {fileID: 131329521}
+  networkManager: {fileID: 1063487579}
+  checkerPlate: {fileID: 394352118}
 --- !u!114 &1069256175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11031,7 +11035,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1395164906
 Transform:
   m_ObjectHideFlags: 0

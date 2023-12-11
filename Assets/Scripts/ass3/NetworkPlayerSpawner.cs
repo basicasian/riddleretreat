@@ -79,9 +79,9 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
             PhotonNetwork.Destroy(spawnedWall);
         }
 
-        if (PhotonNetwork.IsMasterClient)
+        if (resetButtonWrist.activeSelf)
         {
-            resetButtonWrist.SetActive(true);
+            resetButtonWrist.SetActive(false);
         }
 
         connectButtonWrist.SetActive(true);
