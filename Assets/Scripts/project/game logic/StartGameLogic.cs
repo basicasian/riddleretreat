@@ -74,7 +74,6 @@ public class StartGameLogic : MonoBehaviour
         PlaceGameObjects();
     }
 
-
     private void PlaceGameObjects()
     {
         gameTable.SetActive(true);

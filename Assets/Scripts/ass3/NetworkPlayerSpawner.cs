@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 
 public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
@@ -12,6 +13,11 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
     public GameObject xrOrigin;
     public GameObject lobby;
 
+    public GameObject exitButtonWrist;
+    public GameObject connectButtonWrist;
+    public GameObject disconnectButtonWrist;
+    public GameObject resetButtonWrist;
+
     private GameLogic gameLogic;
     public Vector3 playerPosition = new Vector3(3, 0, -5);
     public Vector3 helperPosition = new Vector3(3, 0, -2);
@@ -19,11 +25,19 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
 
     public void Start()
     {
+
     }
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
 
+        if (PhotonNetwork.IsMasterClient)
+        {
+            resetButtonWrist.SetActive(true);
+        }
+
+        connectButtonWrist.SetActive(false);
+        disconnectButtonWrist.SetActive(true);
         lobby.SetActive(true);
 
         // player position
@@ -41,7 +55,6 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
         // helperObject
         helperPosition = Vector3.Scale(helperPosition, sign);
         spawnedHelperPrefab = PhotonNetwork.Instantiate("Prefabs/Project/HelperObject", helperPosition, Quaternion.identity);
-
 
         // helperObject
         wallPosition = Vector3.Scale(wallPosition, sign);
@@ -65,6 +78,14 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.Destroy(spawnedWall);
         }
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            resetButtonWrist.SetActive(true);
+        }
+
+        connectButtonWrist.SetActive(true);
+        disconnectButtonWrist.SetActive(false);
         lobby.SetActive(false);
     }
 
