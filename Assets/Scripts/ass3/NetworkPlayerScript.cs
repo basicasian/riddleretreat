@@ -48,7 +48,7 @@ public class NetworkPlayerScript : MonoBehaviour, IPunObservable
 
     private void Awake()
     {
-       startReference.action.started += StartGame;
+       //startReference.action.started += StartGame;
     }
 
 
@@ -126,6 +126,14 @@ public class NetworkPlayerScript : MonoBehaviour, IPunObservable
             {
                 status = PlayerStatus.hasRestarted;
             }
+            if (startGameLogicScript.isPlaying)
+            {
+                status = PlayerStatus.isReady;
+            }
+            if (!startGameLogicScript.isPlaying && !startGameLogicScript.isReset)
+            {
+                status = PlayerStatus.isWaiting;
+            }
         }
     }
 
@@ -143,7 +151,7 @@ public class NetworkPlayerScript : MonoBehaviour, IPunObservable
         }
     }
 
-    
+    /*
     public void StartGame(InputAction.CallbackContext ctx)
     {
         if (photonView.IsMine)
@@ -152,6 +160,7 @@ public class NetworkPlayerScript : MonoBehaviour, IPunObservable
             status = PlayerStatus.isReady;
         }
     }
+    */
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
