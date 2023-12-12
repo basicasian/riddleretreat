@@ -141,7 +141,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         int counter = 0;
         foreach (GameObject player in players)
         {
-            if (player.GetComponent<NetworkPlayerScript>().status == PlayerStatus.hasRestarted)
+            if (player.GetComponent<NetworkPlayerScript>().GetPlayerStatus() == PlayerStatus.hasRestarted)
             {
                 counter++;
             }

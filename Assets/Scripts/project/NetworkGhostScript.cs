@@ -7,17 +7,8 @@ using Unity.XR.CoreUtils;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.InputSystem;
 
-public enum PlayerStatus
-{
-    isWaiting,
-    isReady,
-    hasWon,
-    hasLost,
-    hasRestarted,
-    ghost
-}
 
-public class NetworkPlayerScript : MonoBehaviour, IPunObservable
+public class NetworkGhostScript : MonoBehaviour, IPunObservable
 {
     // clone
     public GameObject head;
@@ -35,22 +26,12 @@ public class NetworkPlayerScript : MonoBehaviour, IPunObservable
     public PlayerStatus status;
 
     public bool isLocal;
-    /*
-    public bool isReady;
-    public bool hasWon;*/
     List<Renderer> rendererList = new List<Renderer>();
-
-    Color originalColor = new Color(0.0f, 0.8f, 1.0f, 0.7f);
 
     public InputActionReference startReference = null;
 
     public GameObject gameLogicManager;
     private StartGameLogic startGameLogicScript;
-
-    private void Awake()
-    {
-        //startReference.action.started += StartGame;
-    }
 
 
     // Start is called before the first frame update
@@ -74,40 +55,11 @@ public class NetworkPlayerScript : MonoBehaviour, IPunObservable
         gameLogicManager = GameObject.Find("Managers/GameLogic Manager");
         startGameLogicScript = gameLogicManager.GetComponent<StartGameLogic>();
 
-        /*
-        if (photonView.IsMine)
-        {
-            startPosition = xrCamera.transform.position;
-        }
-        else
-        {
-            startPosition = transform.position;
-        }*/
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        foreach (Renderer r in rendererList)
-        {
-            switch (status)
-            {
-                case PlayerStatus.isReady:
-                    r.material.SetColor("_Color", Color.yellow);
-                    break;
-                case PlayerStatus.hasLost:
-                    r.material.SetColor("_Color", Color.red);
-                    break;
-                case PlayerStatus.hasWon:
-                    r.material.SetColor("_Color", Color.green);
-                    break;
-                default:
-                    r.material.SetColor("_Color", originalColor);
-                    break;
-            }
-        }
-
         // synchronize xr objects to clones
         if (photonView.IsMine)
         {
@@ -131,11 +83,6 @@ public class NetworkPlayerScript : MonoBehaviour, IPunObservable
             {
                 status = PlayerStatus.isReady;
             }
-            /*
-            if (!startGameLogicScript.isPlaying && !startGameLogicScript.isReset)
-            {
-                status = PlayerStatus.isWaiting;
-            }*/
         }
     }
 
@@ -152,18 +99,6 @@ public class NetworkPlayerScript : MonoBehaviour, IPunObservable
             target.transform.rotation = Quaternion.identity;
         }
     }
-
-    /*
-    public void StartGame(InputAction.CallbackContext ctx)
-    {
-        if (photonView.IsMine)
-        {
-            Debug.Log("trigger");
-            status = PlayerStatus.isReady;
-        }
-    }
-    */
-
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsReading)

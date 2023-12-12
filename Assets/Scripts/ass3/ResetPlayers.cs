@@ -31,7 +31,7 @@ public class ResetPlayers : MonoBehaviour
         List<PlayerStatus> statusList = new List<PlayerStatus>();
         foreach (GameObject player in playerGameObjects)
         {
-            statusList.Add(player.GetComponent<NetworkPlayerScript>().status);
+            statusList.Add(player.GetComponent<NetworkPlayerScript>().GetPlayerStatus());
 
             // get start position
             if (player.GetComponent<NetworkPlayerScript>().isLocal)
@@ -45,7 +45,7 @@ public class ResetPlayers : MonoBehaviour
                 GameObject head = player.transform.GetChild(0).gameObject;
                 if (head.transform.position.z >= 30)
                 {
-                    player.GetComponent<NetworkPlayerScript>().status = PlayerStatus.hasWon;
+                    player.GetComponent<NetworkPlayerScript>().SetPlayerStatus(PlayerStatus.hasWon);
                     gameEnded = true;
                 }
                 
@@ -73,9 +73,9 @@ public class ResetPlayers : MonoBehaviour
             {
                 GameObject head = player.transform.GetChild(0).gameObject;
 
-                if (head.transform.position.z < 30 && !((player.GetComponent<NetworkPlayerScript>().status) == PlayerStatus.hasWon))
+                if (head.transform.position.z < 30 && !((player.GetComponent<NetworkPlayerScript>().GetPlayerStatus()) == PlayerStatus.hasWon))
                 {
-                    player.GetComponent<NetworkPlayerScript>().status = PlayerStatus.hasLost;
+                    player.GetComponent<NetworkPlayerScript>().SetPlayerStatus(PlayerStatus.hasLost);
                 }
             }
         }

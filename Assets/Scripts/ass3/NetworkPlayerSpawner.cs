@@ -48,9 +48,17 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
         }
 
         xrOrigin.transform.position = Vector3.Scale(playerPosition, sign);
-        // player
         playerPosition = Vector3.Scale(playerPosition, sign);
-        spawnedPlayerPrefab = PhotonNetwork.Instantiate("Prefabs/Network Player", playerPosition, Quaternion.identity);
+
+        // player or ghost observer 
+        if (PhotonNetwork.PlayerList.Length >= 2)
+        {
+            spawnedPlayerPrefab = PhotonNetwork.Instantiate("Prefabs/Network Player", playerPosition, Quaternion.identity);
+        } else {
+            spawnedPlayerPrefab = PhotonNetwork.Instantiate("Prefabs/Ghost Player", playerPosition, Quaternion.identity);
+            deactivatePlayerAbilities();
+            return;
+        }
 
         // helperObject
         helperPosition = Vector3.Scale(helperPosition, sign);
@@ -78,19 +86,28 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.Destroy(spawnedWall);
         }
-
+        if (lobby != null)
+        {
+            lobby.SetActive(false);
+        }
         if (resetButtonWrist.activeSelf)
         {
             resetButtonWrist.SetActive(false);
         }
-
         connectButtonWrist.SetActive(true);
         disconnectButtonWrist.SetActive(false);
-        lobby.SetActive(false);
+        
     }
 
     public GameObject GetHelperObject()
     {
         return spawnedHelperPrefab;
+    }
+
+    private void deactivatePlayerAbilities()
+    {
+        //GameObject.Find("XR Origin/Camera Offset/Left Ray").SetActive(false);
+        //GameObject.Find("XR Origin/Camera Offset/Right Ray").SetActive(false);
+        GameObject.Find("Managers/Player Manager").GetComponent<PlayerPoisonRestriction>().enabled = false;
     }
 }
