@@ -149,6 +149,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         if (counter == PhotonNetwork.PlayerList.Length)
         {
             isReset = false;
+            localisReset = false;
         }
     }
 
