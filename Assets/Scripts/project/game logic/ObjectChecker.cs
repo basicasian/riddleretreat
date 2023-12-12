@@ -16,6 +16,7 @@ public class ObjectChecker : MonoBehaviour, IPunObservable
 
     public GameObject winScreen;
     public GameObject walls;
+    public GameObject teleportArea;
 
     // Start is called before the first frame update
     void Start()
@@ -89,9 +90,9 @@ public class ObjectChecker : MonoBehaviour, IPunObservable
             rightController.GetComponent<HapticFeedbackOnHover>().StartHapticPulse();
 
             // set objects active or inactive
-            walls.SetActive(false);
+            //walls.SetActive(false);
             winScreen.SetActive(true);
-            Debug.Log(winScreen.activeSelf);
+            teleportArea.SetActive(true);
         }
     }
 

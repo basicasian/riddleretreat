@@ -32,6 +32,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
     public GameObject checkerPlate;
     private ObjectChecker objectCheckerScript;
     public GameObject walls;
+    public GameObject teleportArea;
 
     private GameObject[] players;
 
@@ -134,7 +135,8 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         // reset tasks achieved
         objectCheckerScript.tasksAchieved = false;
         winScreen.SetActive(false);
-        walls.SetActive(true);
+        //walls.SetActive(true);
+        teleportArea.SetActive(false);
 
         // reset game status
         isPlaying = false;
