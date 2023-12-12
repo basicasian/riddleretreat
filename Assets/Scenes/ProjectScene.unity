@@ -3931,9 +3931,9 @@ MonoBehaviour:
   object3Found: 0
   leftController: {fileID: 648693329}
   rightController: {fileID: 265516653}
-  winScreen: {fileID: 0}
-  walls: {fileID: 0}
-  teleportArea: {fileID: 0}
+  winScreen: {fileID: 2132750780}
+  walls: {fileID: 2140743986}
+  teleportArea: {fileID: 1314488907}
 --- !u!114 &394352124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11076,7 +11076,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1314488908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11784,7 +11784,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1395164906
 Transform:
   m_ObjectHideFlags: 0
@@ -18208,7 +18208,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2132750781
 RectTransform:
   m_ObjectHideFlags: 0
