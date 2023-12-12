@@ -146,6 +146,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
                 counter++;
             }
         }
+        Debug.Log(counter);
         if (counter == PhotonNetwork.PlayerList.Length)
         {
             isReset = false;

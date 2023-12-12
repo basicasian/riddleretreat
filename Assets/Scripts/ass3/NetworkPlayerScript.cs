@@ -130,10 +130,11 @@ public class NetworkPlayerScript : MonoBehaviour, IPunObservable
             {
                 status = PlayerStatus.isReady;
             }
+            /*
             if (!startGameLogicScript.isPlaying && !startGameLogicScript.isReset)
             {
                 status = PlayerStatus.isWaiting;
-            }
+            }*/
         }
     }
 
