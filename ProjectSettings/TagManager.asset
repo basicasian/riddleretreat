@@ -9,6 +9,14 @@ TagManager:
   - Wall
   - Cue
   - Cue Handle
+  - Bullet
+  - HelperObject
+  - CreatedObject
+  - Poison
+  - GameTable
+  - ButtonWall
+  - StartButton
+  - BackText
   layers:
   - Default
   - TransparentFX
@@ -19,9 +27,9 @@ TagManager:
   - BallsLayer
   - CueLayer
   - Obstacle
-  - 
-  - 
-  - 
+  - Border
+  - HelperObjectLayer
+  - GeneralUI
   - 
   - 
   - 
