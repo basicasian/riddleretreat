@@ -23,6 +23,14 @@ public class ObjectChecker : MonoBehaviour, IPunObservable
         tasksAchieved = false;
     }
 
+    // for debugging
+    /*
+    void Update()
+    {
+        CheckAllTasksAchieved();
+    }
+    */
+
     private void OnTriggerStay(Collider other)
     {
         // only check if not found already

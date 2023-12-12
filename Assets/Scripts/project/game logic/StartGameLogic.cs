@@ -18,7 +18,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
     public GameObject lobby;
     public GameObject gameTable;
     public GameObject player2Uis;
-    //public GameObject winScreen;
+    public GameObject winScreen;
     public Game1UiRenderer game1UiRenderer;
 
     // for haptic feedback
@@ -31,7 +31,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
     private NetworkPlayerSpawner networkPlayerSpawnerScript;
     public GameObject checkerPlate;
     private ObjectChecker objectCheckerScript;
-    //public GameObject walls;
+    public GameObject walls;
 
     private GameObject[] players;
 
@@ -133,8 +133,8 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
 
         // reset tasks achieved
         objectCheckerScript.tasksAchieved = false;
-        //winScreen.SetActive(false);
-        //walls.SetActive(true);
+        winScreen.SetActive(false);
+        walls.SetActive(true);
 
         // reset game status
         isPlaying = false;
