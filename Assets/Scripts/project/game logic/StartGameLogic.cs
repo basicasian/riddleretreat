@@ -43,7 +43,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
 
     void Update()
     {
-        if (isReset && localisReset)
+        if (isReset && !localisReset)
         {
             ResetGame();
         }
@@ -51,7 +51,6 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         // check if player touches button at the same time
         if (!isPlaying)
         {
-            isReset = false;
             buttonWalls = GameObject.FindGameObjectsWithTag("ButtonWall");
             if (buttonWalls != null && buttonWalls.Length != 0)
             {
@@ -127,15 +126,13 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
 
         // reset game status
         isPlaying = false;
-        localisReset = false;
-        //isReset = false;
+        localisReset = true;
 
     }
 
     public void setResetGame(bool value)
     {
         isReset = value;
-        localisReset = value;
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

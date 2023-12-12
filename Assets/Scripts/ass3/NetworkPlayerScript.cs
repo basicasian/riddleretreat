@@ -12,7 +12,8 @@ public enum PlayerStatus
     isWaiting,
     isReady,
     hasWon,
-    hasLost
+    hasLost,
+    hasRestarted
 }
 
 public class NetworkPlayerScript : MonoBehaviour, IPunObservable
@@ -42,6 +43,9 @@ public class NetworkPlayerScript : MonoBehaviour, IPunObservable
 
     public InputActionReference startReference = null;
 
+    public GameObject gameLogicManager;
+    private StartGameLogic startGameLogicScript;
+
     private void Awake()
     {
        startReference.action.started += StartGame;
@@ -65,6 +69,9 @@ public class NetworkPlayerScript : MonoBehaviour, IPunObservable
         status = PlayerStatus.isWaiting;
 
         startPosition = transform.position; // should work like this
+
+        gameLogicManager = GameObject.Find("Managers/GameLogic Manager");
+        startGameLogicScript = gameLogicManager.GetComponent<StartGameLogic>();
 
         /*
         if (photonView.IsMine)
@@ -114,6 +121,11 @@ public class NetworkPlayerScript : MonoBehaviour, IPunObservable
             MapXRPosition(body, xrCamera);
             MapXRPosition(leftHand, xrLeftHand);
             MapXRPosition(rightHand, xrRightHand);   
+
+            if (startGameLogicScript.isReset)
+            {
+                status = PlayerStatus.hasRestarted;
+            }
         }
     }
 

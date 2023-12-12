@@ -56,7 +56,7 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
         helperPosition = Vector3.Scale(helperPosition, sign);
         spawnedHelperPrefab = PhotonNetwork.Instantiate("Prefabs/Project/HelperObject", helperPosition, Quaternion.identity);
 
-        // helperObject
+        // buttonWall
         wallPosition = Vector3.Scale(wallPosition, sign);
         spawnedWall = PhotonNetwork.Instantiate("Prefabs/Project/ButtonWall", wallPosition, Quaternion.identity);
 
