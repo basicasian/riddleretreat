@@ -8708,6 +8708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlaying: 0
   isReset: 0
+  localisReset: 0
   gameTable: {fileID: 339484949}
   player2Uis: {fileID: 2048819201}
   game1UiRenderer: {fileID: 1193645458}
@@ -8734,7 +8735,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 1069256174}
   sceneViewId: 4
   InstantiationId: 0
   isRuntimeInstantiated: 0

@@ -30,6 +30,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
     public GameObject checkerPlate;
     private ObjectChecker objectCheckerScript;
 
+    private GameObject[] players;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +47,10 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         if (isReset && !localisReset)
         {
             ResetGame();
+        }
+        if (isReset)
+        {
+            checkBothIsReset();
         }
 
         // check if player touches button at the same time
@@ -128,6 +133,23 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         isPlaying = false;
         localisReset = true;
 
+    }
+
+    public void checkBothIsReset()
+    {
+        players = GameObject.FindGameObjectsWithTag("Player");
+        int counter = 0;
+        foreach (GameObject player in players)
+        {
+            if (player.GetComponent<NetworkPlayerScript>().status == PlayerStatus.hasRestarted)
+            {
+                counter++;
+            }
+        }
+        if (counter == PhotonNetwork.PlayerList.Length)
+        {
+            isReset = false;
+        }
     }
 
     public void setResetGame(bool value)
