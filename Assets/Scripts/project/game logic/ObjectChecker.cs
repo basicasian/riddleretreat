@@ -5,11 +5,11 @@ public class ObjectChecker : MonoBehaviour, IPunObservable
 {
     public bool tasksAchieved;
     public GameObject objectToBuild1;
-    private bool object1Found;
+    public bool object1Found;
     public GameObject objectToBuild2;
-    private bool object2Found;
+    public bool object2Found;
     public GameObject objectToBuild3;
-    private bool object3Found;
+    public bool object3Found;
 
     public GameObject leftController;
     public GameObject rightController;
@@ -69,6 +69,7 @@ public class ObjectChecker : MonoBehaviour, IPunObservable
     
     void CheckAllTasksAchieved()
     {
+
         // Check if all three tasks are achieved
         if (object1Found == true && object2Found == true && object3Found == true)
         {
@@ -80,8 +81,9 @@ public class ObjectChecker : MonoBehaviour, IPunObservable
             rightController.GetComponent<HapticFeedbackOnHover>().StartHapticPulse();
 
             // set objects active or inactive
-            winScreen.SetActive(true);
             walls.SetActive(false);
+            winScreen.SetActive(true);
+            Debug.Log(winScreen.activeSelf);
         }
     }
 

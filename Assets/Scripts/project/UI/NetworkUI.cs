@@ -11,7 +11,7 @@ public class NetworkUI : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        //ConnectToServer();
+        ConnectToServer();
     }
 
     private void Update()
