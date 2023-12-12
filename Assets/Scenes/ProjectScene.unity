@@ -779,7 +779,7 @@ GameObject:
   - component: {fileID: 81988290}
   - component: {fileID: 81988289}
   - component: {fileID: 81988288}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Disconnect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1582,7 +1582,7 @@ GameObject:
   - component: {fileID: 225328877}
   - component: {fileID: 225328876}
   - component: {fileID: 225328875}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Connect Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1716,7 +1716,7 @@ GameObject:
   - component: {fileID: 231514233}
   - component: {fileID: 231514232}
   - component: {fileID: 231514231}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Reset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3750,7 +3750,7 @@ GameObject:
   - component: {fileID: 421537594}
   - component: {fileID: 421537593}
   - component: {fileID: 421537592}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4839,7 +4839,7 @@ GameObject:
   - component: {fileID: 635188310}
   - component: {fileID: 635188312}
   - component: {fileID: 635188311}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5623,7 +5623,7 @@ GameObject:
   - component: {fileID: 731410443}
   - component: {fileID: 731410445}
   - component: {fileID: 731410444}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6590,7 +6590,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: hover with over object to modify size or color!
+  m_text: hover with your hand over the object to modify size or color!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -10091,7 +10091,7 @@ GameObject:
   - component: {fileID: 1299584761}
   - component: {fileID: 1299584763}
   - component: {fileID: 1299584762}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11165,7 +11165,7 @@ GameObject:
   - component: {fileID: 1398482290}
   - component: {fileID: 1398482292}
   - component: {fileID: 1398482291}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11378,7 +11378,7 @@ GameObject:
   - component: {fileID: 1439379315}
   - component: {fileID: 1439379314}
   - component: {fileID: 1439379313}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: WristUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11965,7 +11965,7 @@ GameObject:
   - component: {fileID: 1484095132}
   - component: {fileID: 1484095131}
   - component: {fileID: 1484095130}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13103,7 +13103,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 4
+    m_Bits: 4294967295
   m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
@@ -13752,7 +13752,7 @@ GameObject:
   - component: {fileID: 1638921485}
   - component: {fileID: 1638921484}
   - component: {fileID: 1638921483}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: HandUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13880,7 +13880,7 @@ GameObject:
   - component: {fileID: 1640399275}
   - component: {fileID: 1640399277}
   - component: {fileID: 1640399276}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14343,7 +14343,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 460, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.463, y: 0.74}
+  m_AnchoredPosition: {x: 2.463, y: 1.311}
   m_SizeDelta: {x: 945, y: 489}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1724583054
@@ -14433,7 +14433,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724583051}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: febae10aa62ef6c428f23f0f7e75cd42, type: 3}
   m_Name: 
@@ -16022,7 +16022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2048819202
 Transform:
   m_ObjectHideFlags: 0
