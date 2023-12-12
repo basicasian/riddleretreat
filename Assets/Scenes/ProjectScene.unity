@@ -779,7 +779,7 @@ GameObject:
   - component: {fileID: 81988290}
   - component: {fileID: 81988289}
   - component: {fileID: 81988288}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Disconnect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1582,7 +1582,7 @@ GameObject:
   - component: {fileID: 225328877}
   - component: {fileID: 225328876}
   - component: {fileID: 225328875}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Connect Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1716,7 +1716,7 @@ GameObject:
   - component: {fileID: 231514233}
   - component: {fileID: 231514232}
   - component: {fileID: 231514231}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Reset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3009,7 +3009,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 4294967295
+    m_Bits: 4
   m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
@@ -3750,7 +3750,7 @@ GameObject:
   - component: {fileID: 421537594}
   - component: {fileID: 421537593}
   - component: {fileID: 421537592}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4839,7 +4839,7 @@ GameObject:
   - component: {fileID: 635188310}
   - component: {fileID: 635188312}
   - component: {fileID: 635188311}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5623,7 +5623,7 @@ GameObject:
   - component: {fileID: 731410443}
   - component: {fileID: 731410445}
   - component: {fileID: 731410444}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10091,7 +10091,7 @@ GameObject:
   - component: {fileID: 1299584761}
   - component: {fileID: 1299584763}
   - component: {fileID: 1299584762}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11165,7 +11165,7 @@ GameObject:
   - component: {fileID: 1398482290}
   - component: {fileID: 1398482292}
   - component: {fileID: 1398482291}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11378,7 +11378,7 @@ GameObject:
   - component: {fileID: 1439379315}
   - component: {fileID: 1439379314}
   - component: {fileID: 1439379313}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WristUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11965,7 +11965,7 @@ GameObject:
   - component: {fileID: 1484095132}
   - component: {fileID: 1484095131}
   - component: {fileID: 1484095130}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13103,7 +13103,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 0
+    m_Bits: 4
   m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
@@ -13198,7 +13198,7 @@ MonoBehaviour:
   m_HoverTimeToSelect: 0.5
   m_AutoDeselect: 0
   m_TimeToAutoDeselect: 3
-  m_EnableUIInteraction: 1
+  m_EnableUIInteraction: 0
   m_BlockUIOnInteractableSelection: 1
   m_AllowAnchorControl: 0
   m_UseForceGrab: 0
@@ -13752,7 +13752,7 @@ GameObject:
   - component: {fileID: 1638921485}
   - component: {fileID: 1638921484}
   - component: {fileID: 1638921483}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HandUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13880,7 +13880,7 @@ GameObject:
   - component: {fileID: 1640399275}
   - component: {fileID: 1640399277}
   - component: {fileID: 1640399276}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

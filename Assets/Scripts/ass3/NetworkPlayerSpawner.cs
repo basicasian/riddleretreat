@@ -4,7 +4,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.XR;
-using Unity.XR.CoreUtils;
+using UnityEngine.XR.Interaction.Toolkit.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
@@ -54,14 +54,16 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
         playerPosition = Vector3.Scale(playerPosition, sign);
 
         // player or ghost observer 
-        if (PhotonNetwork.PlayerList.Length >= 2)
+        if (PhotonNetwork.PlayerList.Length <= 2)
         {
             spawnedPlayerPrefab = PhotonNetwork.Instantiate("Prefabs/Network Player", playerPosition, Quaternion.identity);
-        } else {
+        }
+        else
+        {
             spawnedPlayerPrefab = PhotonNetwork.Instantiate("Prefabs/Ghost Player", playerPosition, Quaternion.identity);
             deactivatePlayerAbilities();
-            //return;
-        
+            return;
+        }
 
         // helperObject
         helperPosition = Vector3.Scale(helperPosition, sign);
@@ -70,7 +72,6 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
         // buttonWall
         wallPosition = Vector3.Scale(wallPosition, sign);
         spawnedWall = PhotonNetwork.Instantiate("Prefabs/Project/ButtonWall", wallPosition, Quaternion.identity);
-        }
 
     }
 
@@ -110,8 +111,6 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
 
     private void deactivatePlayerAbilities()
     {
-        //GameObject.Find("XR Origin/Camera Offset/Left Ray").SetActive(false);
-        //GameObject.Find("XR Origin/Camera Offset/Right Ray").SetActive(false);
         GameObject.Find("Managers/Player Manager").GetComponent<PlayerPoisonRestriction>().enabled = false;
         GameObject.Find("Managers/Player Manager").GetComponent<BodyBasedSteering>().enabled = false;
 
@@ -121,5 +120,7 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
         GameObject.Find("XR Origin/Camera Offset/Right Controller").GetComponent<HapticFeedbackOnHover>().enabled = false;
         GameObject.Find("XR Origin/Camera Offset/Right Controller").GetComponent<XRDirectInteractor>().enabled = false;
         GameObject.Find("XR Origin/Camera Offset/Right Controller").GetComponent<SphereCollider>().enabled = false;
+
+        GameObject.Find("Environment/Lobby/GameObjects/Table/ModifyUI").GetComponent<TrackedDeviceGraphicRaycaster>().enabled = false;
     }
 }
