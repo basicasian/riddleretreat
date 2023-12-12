@@ -14,6 +14,9 @@ public class ObjectChecker : MonoBehaviour, IPunObservable
     public GameObject leftController;
     public GameObject rightController;
 
+    public GameObject winScreen;
+    public GameObject walls;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,8 +78,13 @@ public class ObjectChecker : MonoBehaviour, IPunObservable
             // send impulse
             leftController.GetComponent<HapticFeedbackOnHover>().StartHapticPulse();
             rightController.GetComponent<HapticFeedbackOnHover>().StartHapticPulse();
+
+            // set objects active or inactive
+            winScreen.SetActive(true);
+            walls.SetActive(false);
         }
     }
+
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {

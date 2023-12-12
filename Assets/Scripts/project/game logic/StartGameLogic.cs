@@ -15,6 +15,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
     private GameObject[] buttonWalls;
 
     // for visibility
+    public GameObject lobby;
     public GameObject gameTable;
     public GameObject player2Uis;
     public Game1UiRenderer game1UiRenderer;
@@ -29,12 +30,15 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
     private NetworkPlayerSpawner networkPlayerSpawnerScript;
     public GameObject checkerPlate;
     private ObjectChecker objectCheckerScript;
+    public GameObject winScreen;
+    public GameObject walls;
 
     private GameObject[] players;
 
     // Start is called before the first frame update
     void Start()
     {
+        lobby.SetActive(false);
         gameTable.SetActive(false);
         player2Uis.SetActive(false);
 
@@ -128,6 +132,8 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
 
         // reset tasks achieved
         objectCheckerScript.tasksAchieved = false;
+        winScreen.SetActive(false);
+        walls.SetActive(true);
 
         // reset game status
         isPlaying = false;
