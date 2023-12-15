@@ -1359,7 +1359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -181.0997, y: -188.50003}
+  m_AnchoredPosition: {x: -181.0997, y: -216.3}
   m_SizeDelta: {x: 386.9, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &178188179
@@ -1382,9 +1382,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '1: Green cube
-
-    size 8'
+  m_text: '1: Green cube'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -2521,7 +2519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &339484950
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4781,7 +4779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftController: {fileID: 648693329}
   rightController: {fileID: 265516653}
-  scaleFactor: 0.1
+  scaleFactor: 0.01
   startPosition: {x: -0.5, y: 0.5, z: -4.5}
 --- !u!4 &532279587 stripped
 Transform:
@@ -5071,7 +5069,7 @@ Transform:
   m_GameObject: {fileID: 577293792}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.392, y: 1.1170002, z: -3.111}
-  m_LocalScale: {x: 0.17999995, y: 0.18, z: 0.17999995}
+  m_LocalScale: {x: 0.18, y: 0.18, z: 0.18}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 31037996}
@@ -11260,7 +11258,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1314488907}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.02, z: -10}
+  m_LocalPosition: {x: 0, y: 0.5, z: -10}
   m_LocalScale: {x: 0.3, y: 0.1, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11784,7 +11782,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1395164906
 Transform:
   m_ObjectHideFlags: 0
@@ -12281,7 +12279,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12.899897, y: -233.50005}
+  m_AnchoredPosition: {x: -12.899897, y: -257.3}
   m_SizeDelta: {x: 386.9, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1445534052
@@ -12304,9 +12302,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '2: Orange sphere
-
-    size 2'
+  m_text: '2: Orange sphere'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -16230,9 +16226,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '3: blue cylinder
-
-    size 4'
+  m_text: '3: blue cylinder'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -17401,7 +17395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2048819202
 Transform:
   m_ObjectHideFlags: 0

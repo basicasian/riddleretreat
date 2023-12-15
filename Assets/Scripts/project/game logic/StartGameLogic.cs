@@ -120,6 +120,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
                 btn.SetActive(true);
             }
         }
+
         // reset player position
         xrOrigin.transform.position = networkPlayerSpawnerScript.playerPosition;
 
@@ -135,16 +136,21 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         winScreen.SetActive(false);
         //walls.SetActive(true);
         teleportArea.SetActive(false);
-
-        // reset game status
-        isPlaying = false;
-        localisReset = true;
-
         foreach (GameObject btnWall in buttonWalls)
         {
             btnWall.GetComponent<ButtonController>().isTouched = false;
         }
 
+        // delete created objects
+        GameObject[] createdObjects = GameObject.FindGameObjectsWithTag("CreatedObject");
+        foreach (GameObject createdObject in createdObjects)
+        {
+            PhotonNetwork.Destroy(createdObject);
+        }
+
+        // reset game status
+        isPlaying = false;
+        localisReset = true;
     }
 
     public void checkBothIsReset()

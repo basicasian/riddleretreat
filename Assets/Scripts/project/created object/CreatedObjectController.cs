@@ -79,7 +79,7 @@ public class CreatedObjectController : MonoBehaviourPunCallbacks
 
         foreach (var interactable in grabInteractables)
         {
-            if (interactable.transform.gameObject.transform.localScale.x > 0.2)
+            if (interactable.transform.gameObject.transform.localScale.x > 0.01)
             {
                 interactable.transform.gameObject.transform.localScale -= new Vector3(scaleFactor, scaleFactor, scaleFactor);
                 interactable.transform.gameObject.GetComponent<Rigidbody>().mass -= scaleFactor;

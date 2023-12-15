@@ -89,12 +89,6 @@ public class ObjectChecker : MonoBehaviour, IPunObservable
             tasksAchieved = true;
             Debug.Log("All tasks achieved!");
 
-            createdObjects = GameObject.FindGameObjectsWithTag("CreatedObject");
-            foreach (GameObject createdObject in createdObjects)
-            {
-                createdObject.SetActive(false);
-            }
-
             // set objects active or inactive
             //walls.SetActive(false);
             winScreen.SetActive(true);
