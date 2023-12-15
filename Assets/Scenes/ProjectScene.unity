@@ -9431,15 +9431,15 @@ MonoBehaviour:
   lobby: {fileID: 1395164905}
   gameTable: {fileID: 339484949}
   player2Uis: {fileID: 2048819201}
-  winScreen: {fileID: 0}
+  winScreen: {fileID: 2132750780}
   game1UiRenderer: {fileID: 1193645458}
   leftController: {fileID: 648693329}
   rightController: {fileID: 265516653}
   xrOrigin: {fileID: 131329521}
   networkManager: {fileID: 1063487579}
   checkerPlate: {fileID: 394352118}
-  walls: {fileID: 0}
-  teleportArea: {fileID: 0}
+  walls: {fileID: 2140743986}
+  teleportArea: {fileID: 1314488907}
 --- !u!114 &1069256175
 MonoBehaviour:
   m_ObjectHideFlags: 0

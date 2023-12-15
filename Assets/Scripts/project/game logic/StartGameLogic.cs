@@ -74,6 +74,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
                     }
                 }
 
+                Debug.Log("counter: " + counter);
                 if (counter == PhotonNetwork.PlayerList.Length)
                 {
                     StartGame();
@@ -106,10 +107,6 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         {
             btn.SetActive(false);
         }
-        foreach (GameObject btnWall in buttonWalls)
-        {
-            btnWall.GetComponent<ButtonController>().isTouched = false;
-        }
     }
 
     private void ResetGame()
@@ -117,6 +114,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         // reset visibilities
         gameTable.SetActive(false);
         player2Uis.SetActive(false);
+        startButtons = GameObject.FindGameObjectsWithTag("StartButton");
         foreach (GameObject btn in startButtons)
         {
             btn.SetActive(true);
@@ -141,6 +139,11 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         // reset game status
         isPlaying = false;
         localisReset = true;
+
+        foreach (GameObject btnWall in buttonWalls)
+        {
+            btnWall.GetComponent<ButtonController>().isTouched = false;
+        }
 
     }
 
