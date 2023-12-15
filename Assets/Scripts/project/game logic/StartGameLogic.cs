@@ -101,7 +101,6 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
     {
         gameTable.SetActive(true);
         player2Uis.SetActive(true);
-
         startButtons = GameObject.FindGameObjectsWithTag("StartButton");
         foreach (GameObject btn in startButtons)
         {
@@ -114,12 +113,13 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         // reset visibilities
         gameTable.SetActive(false);
         player2Uis.SetActive(false);
-        startButtons = GameObject.FindGameObjectsWithTag("StartButton");
-        foreach (GameObject btn in startButtons)
+        if (startButtons != null && startButtons.Length == PhotonNetwork.PlayerList.Length)
         {
-            btn.SetActive(true);
+            foreach (GameObject btn in startButtons)
+            {
+                btn.SetActive(true);
+            }
         }
-
         // reset player position
         xrOrigin.transform.position = networkPlayerSpawnerScript.playerPosition;
 

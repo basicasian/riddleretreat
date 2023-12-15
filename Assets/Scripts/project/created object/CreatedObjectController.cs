@@ -57,8 +57,12 @@ public class CreatedObjectController : MonoBehaviourPunCallbacks
 
         foreach (var interactable in grabInteractables)
         {
-            interactable.transform.gameObject.transform.localScale *= (1 + scaleFactor);
-            interactable.transform.gameObject.GetComponent<Rigidbody>().mass *= (1 + scaleFactor);
+            if (interactable.transform.gameObject.transform.localScale.x < 3)
+            {
+                interactable.transform.gameObject.transform.localScale += new Vector3(scaleFactor, scaleFactor, scaleFactor);
+                interactable.transform.gameObject.GetComponent<Rigidbody>().mass += scaleFactor;
+            }
+
         }
 
     }
@@ -75,8 +79,12 @@ public class CreatedObjectController : MonoBehaviourPunCallbacks
 
         foreach (var interactable in grabInteractables)
         {
-            interactable.transform.gameObject.transform.localScale *= (1 - scaleFactor);
-            interactable.transform.gameObject.GetComponent<Rigidbody>().mass *= (1 - scaleFactor);
+            if (interactable.transform.gameObject.transform.localScale.x > 0.2)
+            {
+                interactable.transform.gameObject.transform.localScale -= new Vector3(scaleFactor, scaleFactor, scaleFactor);
+                interactable.transform.gameObject.GetComponent<Rigidbody>().mass -= scaleFactor;
+            }
+
         }
     }
 
