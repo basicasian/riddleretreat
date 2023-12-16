@@ -120,6 +120,8 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
                 btn.SetActive(true);
             }
         }
+        winScreen.SetActive(false);
+        teleportArea.SetActive(false);
 
         // reset player position
         xrOrigin.transform.position = networkPlayerSpawnerScript.playerPosition;
@@ -133,9 +135,9 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
 
         // reset tasks achieved
         objectCheckerScript.tasksAchieved = false;
-        winScreen.SetActive(false);
-        //walls.SetActive(true);
-        teleportArea.SetActive(false);
+        objectCheckerScript.object1Found = false;
+        objectCheckerScript.object2Found = false;
+        objectCheckerScript.object3Found = false;
         foreach (GameObject btnWall in buttonWalls)
         {
             btnWall.GetComponent<ButtonController>().isTouched = false;
