@@ -95,9 +95,12 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
         {
             lobby.SetActive(false);
         }
-        if (resetButtonWrist.activeSelf)
+        if (resetButtonWrist != null)
         {
-            resetButtonWrist.SetActive(false);
+            if (resetButtonWrist.activeSelf)
+            {
+                resetButtonWrist.SetActive(false);
+            }
         }
         connectButtonWrist.SetActive(true);
         disconnectButtonWrist.SetActive(false);
