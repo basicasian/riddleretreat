@@ -74,7 +74,6 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
                     }
                 }
 
-                Debug.Log("counter: " + counter);
                 if (counter == PhotonNetwork.PlayerList.Length)
                 {
                     StartGame();
@@ -87,7 +86,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
 
     private void StartGame()
     {
-        Debug.Log("Start Game");
+        Debug.Log("Start Game!");
         game1UiRenderer.gameHasStarted = true;
 
         // send impulse
@@ -140,7 +139,10 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         objectCheckerScript.object3Found = false;
         foreach (GameObject btnWall in buttonWalls)
         {
-            btnWall.GetComponent<ButtonController>().isTouched = false;
+            if (btnWall != null)
+            {
+                btnWall.GetComponent<ButtonController>().isTouched = false;
+            }
         }
 
         // delete created objects
@@ -166,7 +168,6 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
                 counter++;
             }
         }
-        Debug.Log(counter);
         if (counter == PhotonNetwork.PlayerList.Length)
         {
             isReset = false;
