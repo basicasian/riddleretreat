@@ -74,7 +74,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
                     }
                 }
 
-                if (counter == PhotonNetwork.PlayerList.Length)
+                if (counter == 2)
                 {
                     StartGame();
                     isPlaying = true;
@@ -112,7 +112,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         // reset visibilities
         gameTable.SetActive(false);
         player2Uis.SetActive(false);
-        if (startButtons != null && startButtons.Length == PhotonNetwork.PlayerList.Length)
+        if (startButtons != null && startButtons.Length == 2)
         {
             foreach (GameObject btn in startButtons)
             {
