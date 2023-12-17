@@ -16,6 +16,9 @@ public class ObjectChecker : MonoBehaviour, IPunObservable
 
     public GameObject winScreen;
     public GameObject walls;
+    public GameObject teleportArea;
+
+    private GameObject[] createdObjects;
 
     // Start is called before the first frame update
     void Start()
@@ -66,7 +69,10 @@ public class ObjectChecker : MonoBehaviour, IPunObservable
                 // round to two decimals
                 if (Mathf.Round(objectToBuild.gameObject.transform.localScale.x * 100f) / 100f == Mathf.Round(other.gameObject.transform.localScale.x * 100f) / 100f )
                 {
-                    other.gameObject.SetActive(false);
+                    // send impulse
+                    leftController.GetComponent<HapticFeedbackOnHover>().StartHapticPulse();
+                    rightController.GetComponent<HapticFeedbackOnHover>().StartHapticPulse();
+
                     value = true;
                 }
             }
@@ -77,21 +83,16 @@ public class ObjectChecker : MonoBehaviour, IPunObservable
     
     void CheckAllTasksAchieved()
     {
-
         // Check if all three tasks are achieved
         if (object1Found == true && object2Found == true && object3Found == true)
         {
             tasksAchieved = true;
             Debug.Log("All tasks achieved!");
 
-            // send impulse
-            leftController.GetComponent<HapticFeedbackOnHover>().StartHapticPulse();
-            rightController.GetComponent<HapticFeedbackOnHover>().StartHapticPulse();
-
             // set objects active or inactive
-            walls.SetActive(false);
+            //walls.SetActive(false);
             winScreen.SetActive(true);
-            Debug.Log(winScreen.activeSelf);
+            teleportArea.SetActive(true);
         }
     }
 

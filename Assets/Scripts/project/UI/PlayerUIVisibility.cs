@@ -37,7 +37,7 @@ public class PlayerUIVisibility : MonoBehaviour
                         foreach (GameObject childObject in childObjects)
                         {
 
-                            Debug.Log(childObject);
+                           // Debug.Log(childObject);
 
                             // Check if the child object is not null
                             if (childObject != null)

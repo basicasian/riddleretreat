@@ -32,6 +32,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
     public GameObject checkerPlate;
     private ObjectChecker objectCheckerScript;
     public GameObject walls;
+    public GameObject teleportArea;
 
     private GameObject[] players;
 
@@ -73,7 +74,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
                     }
                 }
 
-                if (counter == PhotonNetwork.PlayerList.Length)
+                if (counter == 2)
                 {
                     StartGame();
                     isPlaying = true;
@@ -85,7 +86,7 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
 
     private void StartGame()
     {
-        Debug.Log("Start Game");
+        Debug.Log("Start Game!");
         game1UiRenderer.gameHasStarted = true;
 
         // send impulse
@@ -99,15 +100,10 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
     {
         gameTable.SetActive(true);
         player2Uis.SetActive(true);
-
         startButtons = GameObject.FindGameObjectsWithTag("StartButton");
         foreach (GameObject btn in startButtons)
         {
             btn.SetActive(false);
-        }
-        foreach (GameObject btnWall in buttonWalls)
-        {
-            btnWall.GetComponent<ButtonController>().isTouched = false;
         }
     }
 
@@ -116,10 +112,15 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         // reset visibilities
         gameTable.SetActive(false);
         player2Uis.SetActive(false);
-        foreach (GameObject btn in startButtons)
+        if (startButtons != null && startButtons.Length == 2)
         {
-            btn.SetActive(true);
+            foreach (GameObject btn in startButtons)
+            {
+                btn.SetActive(true);
+            }
         }
+        winScreen.SetActive(false);
+        teleportArea.SetActive(false);
 
         // reset player position
         xrOrigin.transform.position = networkPlayerSpawnerScript.playerPosition;
@@ -133,13 +134,30 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
 
         // reset tasks achieved
         objectCheckerScript.tasksAchieved = false;
-        winScreen.SetActive(false);
-        walls.SetActive(true);
+        objectCheckerScript.object1Found = false;
+        objectCheckerScript.object2Found = false;
+        objectCheckerScript.object3Found = false;
+        if (buttonWalls != null && buttonWalls.Length == 2)
+        {
+            foreach (GameObject btnWall in buttonWalls)
+            {
+                btnWall.GetComponent<ButtonController>().isTouched = false;
+            }
+        }
+
+        // delete created objects
+        GameObject[] createdObjects = GameObject.FindGameObjectsWithTag("CreatedObject");
+        if (createdObjects != null)
+        {
+            foreach (GameObject createdObject in createdObjects)
+            {
+                PhotonNetwork.Destroy(createdObject);
+            }
+        }
 
         // reset game status
         isPlaying = false;
         localisReset = true;
-
     }
 
     public void checkBothIsReset()
@@ -148,12 +166,22 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         int counter = 0;
         foreach (GameObject player in players)
         {
-            if (player.GetComponent<NetworkPlayerScript>().GetPlayerStatus() == PlayerStatus.hasRestarted)
+            if (player.GetComponent<NetworkPlayerScript>() != null) 
             {
-                counter++;
+                if (player.GetComponent<NetworkPlayerScript>().GetPlayerStatus() == PlayerStatus.hasRestarted)
+                {
+                    counter++;
+                }
+            }
+
+            if (player.GetComponent<NetworkGhostScript>() != null)
+            {
+                if (player.GetComponent<NetworkGhostScript>().GetPlayerStatus() == PlayerStatus.hasRestarted)
+                {
+                    counter++;
+                }
             }
         }
-        Debug.Log(counter);
         if (counter == PhotonNetwork.PlayerList.Length)
         {
             isReset = false;

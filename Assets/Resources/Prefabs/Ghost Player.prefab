@@ -394,7 +394,8 @@ MonoBehaviour:
   startPosition: {x: 0, y: 0, z: 0}
   status: 5
   isLocal: 0
-  startReference: {fileID: 0}
+  startReference: {fileID: 845526307838459384, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
   gameLogicManager: {fileID: 0}
 --- !u!1 &9199771784293903785
 GameObject:
