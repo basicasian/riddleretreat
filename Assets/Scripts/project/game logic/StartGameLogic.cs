@@ -137,9 +137,9 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         objectCheckerScript.object1Found = false;
         objectCheckerScript.object2Found = false;
         objectCheckerScript.object3Found = false;
-        foreach (GameObject btnWall in buttonWalls)
+        if (buttonWalls != null && buttonWalls.Length == 2)
         {
-            if (btnWall != null)
+            foreach (GameObject btnWall in buttonWalls)
             {
                 btnWall.GetComponent<ButtonController>().isTouched = false;
             }
@@ -147,9 +147,12 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
 
         // delete created objects
         GameObject[] createdObjects = GameObject.FindGameObjectsWithTag("CreatedObject");
-        foreach (GameObject createdObject in createdObjects)
+        if (createdObjects != null)
         {
-            PhotonNetwork.Destroy(createdObject);
+            foreach (GameObject createdObject in createdObjects)
+            {
+                PhotonNetwork.Destroy(createdObject);
+            }
         }
 
         // reset game status
@@ -163,9 +166,20 @@ public class StartGameLogic : MonoBehaviour, IPunObservable
         int counter = 0;
         foreach (GameObject player in players)
         {
-            if (player.GetComponent<NetworkPlayerScript>().GetPlayerStatus() == PlayerStatus.hasRestarted)
+            if (player.GetComponent<NetworkPlayerScript>() != null) 
             {
-                counter++;
+                if (player.GetComponent<NetworkPlayerScript>().GetPlayerStatus() == PlayerStatus.hasRestarted)
+                {
+                    counter++;
+                }
+            }
+
+            if (player.GetComponent<NetworkGhostScript>() != null)
+            {
+                if (player.GetComponent<NetworkGhostScript>().GetPlayerStatus() == PlayerStatus.hasRestarted)
+                {
+                    counter++;
+                }
             }
         }
         if (counter == PhotonNetwork.PlayerList.Length)
