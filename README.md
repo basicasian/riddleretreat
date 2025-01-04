@@ -9,7 +9,7 @@
 
 <p align="middle">
     <img src="screenshot-riddleretreat.JPG" alt="Start Screen" width="27%"/> 
-  <img src="riddleretreat-createobject.jpg" alt="Create Object" width="30%"/> 
+  <img src="riddleretreat-createobject.jpg" alt="Create Object" width="32%"/> 
     <img src="riddleretreat-gamestart.jpg" alt="Game Start" width="29%"/> 
 
 </p>
