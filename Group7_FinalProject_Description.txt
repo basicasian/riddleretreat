@@ -1,0 +1,70 @@
+Group 7 - Riddle Retreat
+(Collaborative 2-Player Task Solving Game)
+
+--------------------------
+Extended Concept:
+--------------------------
+
+The game is a collaborative puzzle solving game. 
+
+Goal:
+2 Players must work together and follow instructions to collaboratively solve the tasks to finish the game and be reunited!
+
+Interaction Descriptions:
+Firstly, Player 1 & Player 2 connect to a server.
+The two players are spawning on their own island. They are not able to move everywhere because there is a poisonous lake around them.
+
+Their first task is to navigate to a wall with an UI on a little island to set themselves ready to start the game.
+This can be achieved by using a helper platform that allows them to navigate around the lake safely. The platform only allows for movement if the player is actually on it.
+When they push the ready button simultaneously, the game officially starts.
+
+After that, they are presented with different instructions on how to proceed further, they have to make their way back to their starting island.
+
+There, one player gets instructions on which objects need to be created, but can't	create them themselves since they don't have access to that UI.
+Meanwhile, the player who has access does not see these instructions.
+The players have to communicate which objects should be created and create, modify, and then place them on a detection surface one by one to finish this task.
+
+After successfully creating the 3 desired objects, the second task is completed and the players can teleport to the winners platform and be reunited!
+
+
+Used Assets:
+Only used assets for the trees and vegetation and the trophy around - no assets that include functionality.
+
+
+------------------------------------------------
+Feature List & Weights for 3 Points
+------------------------------------------------
+Locomotion metaphor with a helper object - 2 points (?):
+Our 'magic carpet’' locomotion surface to navigate over the poisonous lake. Can be activated by stepping on it and pressing a trigger button. The platform then moves into the direction the player is looking at.
+
+Create & modify objects with UI (at least 3 different objects) - 1 point:
+3 different objects have to be created and modified to achieve task 2.
+
+---------------------------------------
+BONUS FEATURE POINTS:
+---------------------------------------
+1. 2-Player simultaneous collaborative interaction with environment (two players should do something simultaneously) - 1 point:
+
+- Both players have to touch their start button (physically) simultaneously for the game to start.
+
+Implemenatation:
+Just a normal button that can be pressed when the hand touches - it then activates a synchronised boolean that a player is ready. The game constantly checks whether the 2 buttons are pressed and then spawns the next instructions if that is true.
+
+
+2. Haptics with vibration - 0.5 points:
+
+Vibration is felt when:
+- the game starts
+- when pressing the button 
+- or touching the cubes to be modified
+- a task is done successfully
+
+Implemenatation:
+Tasks are always checked for locally so the vibration just happens when a certain check has been achieved and then just vibrate if that has happened.
+
+
+3. Teleportation - 0.5 points:
+Added a final platform to teleport to if tasks are accomplished so the players are reunited again and can celebrate their win. Players must look at the platform and press the Grab Button to teleport to it.
+
+Implemenatation:
+The winplatform appears at the end of the game. Just a check to use a teleport ray to teleport onto it.
