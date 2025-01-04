@@ -1,6 +1,6 @@
 # Riddle Retreat
 
-**Creators:** Renate Zhang, Tobias Christoph\
+**Creators:** Renate Zhang, Tobias Christoph \
 **Course:** Virtual Reality Exercise 2023WS, TU Vienna
 
 ## Project Overview
@@ -8,7 +8,9 @@
 *Riddle Retreat* is a collaborative virtual reality puzzle-solving game where two players must communicate and work together to solve tasks and overcome challenges. Set on islands surrounded by a poisonous lake, players must navigate, create, and modify objects to reunite and celebrate their victory. Players must collaborate to solve tasks, following on-screen instructions and using various interaction mechanics, to be reunited on the winner's platform.
 
 <p align="middle">
-  <img src="screenshot-riddleretreat.JPG" alt="Screenshot" width="50%"/> 
+  <img src="screenshot-riddleretreat.JPG" alt="Start Screen" width="30%"/> 
+  <img src="riddleretreat-gamestart.jpg" alt="Game Start" width="32%"/> 
+  <img src="riddleretreat-createobject.jpg" alt="Create Object" width="34%"/> 
 </p>
 
 **Genre:** Collaborative 2-Player Puzzle-Solving VR Game  \
