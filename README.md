@@ -5,7 +5,7 @@
 
 ## Project Overview
 
-*Riddle Retreat* is a collaborative virtual reality puzzle-solving game where two players must communicate and work together to solve tasks and overcome challenges. Set on islands surrounded by a poisonous lake, players must navigate, create, and modify objects to reunite and celebrate their victory. Players must collaborate to solve tasks, following on-screen instructions and using various interaction mechanics, to be reunited on the winner's platform.
+*Riddle Retreat* is a collaborative virtual reality puzzle-solving game where two players must communicate and work together to solve tasks and overcome challenges. Set on islands surrounded by a poisonous lake, players must navigate, create, and modify objects to reunite and celebrate their victory. Players must collaborate to solve tasks, following on-screen instructions and using various interaction mechanics, to be reunited on the winner's platform. The game is compatible with HTC Vive and Meta Quest, developed on Unity and with C#. 
 
 <p align="middle">
     <img src="screenshot-riddleretreat.JPG" alt="Start Screen" width="27%"/> 
